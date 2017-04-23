@@ -1,6 +1,6 @@
 package beauty;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * 求数组中最长的递增子序列
@@ -14,72 +14,83 @@ public class dizengxulie {
         return maxValue;
     }
 
-    static void solution(int[] array, int[] len) {
-        int length = array.length;
-        len[0] = 1;
-        for (int i = 1; i < length; i++) {
-            int maxValue = Integer.MIN_VALUE;// 比array[i]小的最大值
-            int maxIndex = 0;// 比array[i]小的最大值下标
-            for (int j = 0; j < i; j++) {
-                if (array[j] < array[i] && array[j] > maxValue) {
-                    maxValue = array[j];
-                    maxIndex = j;
+    static int solution(int[] array, int[] lis) {
+        int n = array.length;
+        lis[0] = 1;
+        for (int i = 1; i < n; i++) {
+            int maxLen = 0;// array[i]之前的最长子序列长度
+            for (int k = 0; k < i; k++) {
+                if (array[k] < array[i] && lis[k] > maxLen) {
+                    maxLen = lis[k];
                 }
             }
-            if (maxValue == Integer.MIN_VALUE) {
-                len[i] = 1;// 没有找到比array[i]小的值，array[i]本身长度为1
-            } else {
-                len[i] = len[maxIndex] + 1;// 之前最长递增序列加上array[i]构成新序列
-            }
+            // 若没有找到比array[i]小的值，array[i]构成长度为1的子序列
+            // 若找到则在最长递增序列末尾加上array[i]构成新最长子序列
+            lis[i] = maxLen + 1;
         }
+        return max(lis);
     }
 
-    static int[] partition(int[] array, int target) {
-        int[] maxValueAndIndex = new int[]{Integer.MIN_VALUE, 0};
-        int i = 0;
-        int j = array.length - 1;
-        while (true) {
-            while (array[i] < target) {
-                if (i >= j) break;
-                else ++i;
-                if (array[i] > maxValueAndIndex[0]) {// 在左侧寻找比array[i]小的最大值
-                    maxValueAndIndex[0] = array[i];
-                    maxValueAndIndex[1] = i;
+    static int solution2(int[] array, int[] tail) {
+        int n = array.length;
+        tail[0] = array[0];
+        int maxLen = 1;
+        for (int i = 1; i < n; i++) {
+            if (array[i] > tail[maxLen - 1]) {
+                tail[maxLen] = array[i];
+                ++maxLen;
+            } else {
+                for (int k = 0; k < maxLen; k++) {
+                    if (tail[k] >= array[i]) {
+                        tail[k] = array[i];
+                        break;
+                    }
                 }
             }
-            while (array[j] > target) {
-                if (j <= i) break;
-                else --j;
-            }
-            if (i >= j) break;
-            int tmp = array[i];
-            array[i] = array[j];
-            array[j] = tmp;
         }
-        return maxValueAndIndex;
+        return maxLen;
     }
 
-    static void solution2(int[] array, int[] len) {
-        int length = array.length;
-        len[0] = 1;
-        for (int i = 1; i < length; i++) {
-            int[] tmpArray = new int[i];
-            System.arraycopy(array, 0, tmpArray, 0, i);
-            int[] maxValueAndIndex = partition(tmpArray, array[i]);// 采用一次划分寻找比array[i]小的最大值
-            int maxValue = maxValueAndIndex[0];
-            int maxIndex = maxValueAndIndex[1];
-            if (maxValue == Integer.MIN_VALUE) {
-                len[i] = 1;// 没有找到比array[i]小的值，array[i]本身长度为1
+    static int solution3(int[] array, int[] tail) {
+        int n = array.length;
+        tail[0] = array[0];
+        int maxLen = 1;
+        for (int i = 1; i < n; i++) {
+            if (array[i] > tail[maxLen - 1]) {
+                tail[maxLen] = array[i];
+                ++maxLen;
             } else {
-                len[i] = len[maxIndex] + 1;// 之前最长递增序列加上array[i]构成新序列
+                int pos = binarySearch(tail, maxLen, array[i]);
+                tail[pos] = array[i];
             }
         }
+        return maxLen;
+    }
+
+    static int binarySearch(int[] array, int limit, int value) {
+        int start = 0;
+        int end = limit - 1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (array[mid] == value) {
+                return mid;
+            } else if (array[mid] < value) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return start;
     }
 
     public static void main(String[] args) {
-        int[] array = new int[]{1, -1, 2, 0, 4, -5, 6, -7};
-        int[] len = new int[array.length];
-        solution2(array, len);
-        System.out.println(max(len));
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] array = new int[n];
+        for (int i = 0; i < n; i++) {
+            array[i] = sc.nextInt();
+        }
+        int[] lis = new int[n];
+        System.out.println(solution2(array, lis));
     }
 }
