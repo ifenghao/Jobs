@@ -19,26 +19,6 @@ public class iotest {
         return b;
     }
 
-    static class Point{
-        int x;
-
-        Point(int x){
-            this.x=x;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof Point)) return false;
-            if (((Point) obj).x==this.x)return true;
-            return false;
-        }
-
-        @Override
-        public int hashCode() {
-            return x;
-        }
-    }
-
     public static void main(String[] args) {
 //        String s1 = "Programming";
 //        String s2 = new String("Programming");
@@ -73,11 +53,26 @@ public class iotest {
 //            }
 //        }
 //        System.out.println(dp[str.length()][0]);
-        Point p1=new Point(1);
-        Point p2=new Point(1);
-        Set<Point> set =new HashSet<>();
-        set.add(p1);
-        set.add(p2);
-        System.out.println(set);
+        int n=10;
+        System.out.println(Math.pow(2,n+1));
+        System.out.println(combination(n*(n+1)/2, n)+1+3*n-(long)Math.pow(2,n+1));
+        System.out.println(combination(2*n,n)/(n+1));
+    }
+
+    static long combination(int n, int m){
+        long result=1;
+        long tmp=factorial(m);
+        while (m-->0){
+            result*=n--;
+        }
+        return result/tmp;
+    }
+
+    static long factorial(int n){
+        long result=1;
+        while (n>1){
+            result*=n--;
+        }
+        return result;
     }
 }
