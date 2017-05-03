@@ -100,12 +100,8 @@ public class Sort {
         int i = lo + 1, j = hi;
         int point = array[lo];
         while (true) {
-            while (array[i] < point)
-                if (i >= hi) break;
-                else i++;
-            while (array[j] > point)
-                if (j <= lo) break;
-                else j--;
+            while (i < hi && array[i] < point) i++;
+            while (j > lo && array[j] > point) j--;
             if (i >= j) break;
             int tmp = array[j];
             array[j] = array[i];
@@ -134,6 +130,27 @@ public class Sort {
         } else {
             return selectMedium(array, k, j + 1, hi);
         }
+    }
+
+    public static int[] sortIndex(int[] array) {
+        int length = array.length;
+        int[] idx = new int[length];
+        for (int i = 0; i < length; i++) {
+            idx[i] = i;
+        }
+        for (int i = 1; i < length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (array[idx[i]] < array[idx[j]]) {
+                    int tmp = idx[i];
+                    for (int k = i; k > j; k--) {
+                        idx[k] = idx[k - 1];
+                    }
+                    idx[j] = tmp;
+                    break;
+                }
+            }
+        }
+        return idx;
     }
 
     public static void printArray(int[] array) {
