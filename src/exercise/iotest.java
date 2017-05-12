@@ -7,14 +7,13 @@ import java.util.Set;
  * Created by zfh on 17-3-26.
  */
 public class iotest {
-    static int quickpow(int a,int n,int k){
+    static int quickpow(int a, int n, int k) {
         int b = 1;
-        while (n>0)
-        {
-            if ((n & 1)!=0)
-                b = (b*a)%k;
-            n = n >> 1 ;
-            a = (a*a)%k;
+        while (n > 0) {
+            if ((n & 1) != 0)
+                b = (b * a) % k;
+            n = n >> 1;
+            a = (a * a) % k;
         }
         return b;
     }
@@ -53,25 +52,34 @@ public class iotest {
 //            }
 //        }
 //        System.out.println(dp[str.length()][0]);
-        int n=10;
-        System.out.println(Math.pow(2,n+1));
-        System.out.println(combination(n*(n+1)/2, n)+1+3*n-(long)Math.pow(2,n+1));
-        System.out.println(combination(2*n,n)/(n+1));
+        Integer a = 1;
+        Integer b = 2;
+        Integer c = 3;
+        Integer d = 3;
+        Integer e = 127;
+        Integer f = 127;
+        Long g = 3L;
+        System.out.println(c == d);
+        System.out.println(e == f);
+        System.out.println(c == (a + b));
+        System.out.println(c.equals(a + b));
+        System.out.println(g == (a + b));
+        System.out.println(g.equals(a + b));
     }
 
-    static long combination(int n, int m){
-        long result=1;
-        long tmp=factorial(m);
-        while (m-->0){
-            result*=n--;
+    static long combination(int n, int m) {
+        long result = 1;
+        long tmp = factorial(m);
+        while (m-- > 0) {
+            result *= n--;
         }
-        return result/tmp;
+        return result / tmp;
     }
 
-    static long factorial(int n){
-        long result=1;
-        while (n>1){
-            result*=n--;
+    static long factorial(int n) {
+        long result = 1;
+        while (n > 1) {
+            result *= n--;
         }
         return result;
     }
