@@ -29,9 +29,9 @@ public class zuijindiandui {
         return leftPoints;
     }
 
-    static double[][] getRight(double[][] points, double curMin, int mid, int hi) {
+    static double[][] getRight(double[][] points, double bound, int mid, int hi) {
         int right = mid;
-        double rightMax = points[mid][0] + curMin;// 横坐标的右边界
+        double rightMax = points[mid][0] + bound;// 横坐标的右边界
         while (right + 1 <= hi && points[right + 1][0] < rightMax) ++right;
         int len = right - mid + 1;// 包含mid点
         double[][] rightPoints = new double[len][2];
