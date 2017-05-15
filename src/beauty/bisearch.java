@@ -2,6 +2,9 @@ package beauty;
 
 /**
  * Created by zfh on 17-5-14.
+ * 对于条件while(lo<=hi)，退出前一定会满足lo==hi，
+ * 这时只需要考虑mid=lo=hi时查询条件是否满足，
+ * 不满足时尝试分别执行分支条件决定返回lo还是hi
  */
 public class bisearch {
     // 返回任意一个命中元素的索引
@@ -72,6 +75,20 @@ public class bisearch {
         return hi;
     }
 
+    // 返回key的下界索引，即小于key的最大索引
+    static int searchLowerBound2(int[] array, int key) {
+        int lo = 0, hi = array.length - 1, mid;
+        while (lo < hi) {
+            mid = lo + (hi - lo) / 2;
+            if (key <= array[mid]) {
+                hi = mid;// lo==hi-1退出前小于key元素的最大索引
+            } else {
+                lo = mid + 1;
+            }
+        }
+        return hi - 1;
+    }
+
     // 返回key的上界索引，即大于key的最小索引
     static int searchUpperBound(int[] array, int key) {
         int lo = 0, hi = array.length - 1, mid;
@@ -94,8 +111,8 @@ public class bisearch {
         System.out.println(searchEqualMin(array, 5));
         System.out.println(searchEqualMax(array, 6));
         System.out.println(searchEqualMax(array, 5));
-        System.out.println(searchLowerBound(array, 6));
-        System.out.println(searchLowerBound(array, 5));
+        System.out.println(searchLowerBound2(array, 6));
+        System.out.println(searchLowerBound2(array, 7));
         System.out.println(searchUpperBound(array, 6));
         System.out.println(searchUpperBound(array, 5));
     }
