@@ -77,6 +77,10 @@ public class NotAdjacent {
         int r1 = circleSolution(array, n);
         array = leftShift(array, 1);
         int r2 = circleSolution(array, n);
-        System.out.println(Math.max(r1, r2));
+        r2 = Math.max(r1, r2);
+        array = leftShift(array, 1);
+        int r3 = circleSolution(array, n);
+        r3 = Math.max(r2, r3);
+        System.out.println(r3);
     }
 }
