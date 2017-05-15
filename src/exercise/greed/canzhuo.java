@@ -1,4 +1,4 @@
-package exercise;
+package exercise.greed;
 
 import java.util.Arrays;
 import java.util.Scanner;

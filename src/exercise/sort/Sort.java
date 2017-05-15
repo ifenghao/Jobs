@@ -1,4 +1,4 @@
-package exercise;
+package exercise.sort;
 
 /**
  * Created by zfh on 17-3-29.

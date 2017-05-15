@@ -1,4 +1,4 @@
-package exercise;
+package exercise.dp;
 
 /**
  * Created by zfh on 17-3-26.
