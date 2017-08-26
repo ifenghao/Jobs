@@ -1,5 +1,7 @@
 package exercise.sort;
 
+import java.util.Random;
+
 /**
  * Created by zfh on 17-3-29.
  */
@@ -156,6 +158,17 @@ public class Sort {
     public static void printArray(int[] array) {
         for (int i : array) {
             System.out.print(i + ", ");
+        }
+    }
+
+    public static void shuffle(int[] array) {// 调用Arrays.sort快速排序时需要首先打乱，防止最坏情况
+        Random rand = new Random(System.currentTimeMillis());
+        int n = array.length, tmp;
+        for (int i = 0; i < n - 1; i += 10) {
+            int r = i + rand.nextInt(n - i);
+            tmp = array[i];
+            array[i] = array[r];
+            array[r] = tmp;
         }
     }
 
