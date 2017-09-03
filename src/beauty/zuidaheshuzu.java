@@ -43,6 +43,26 @@ public class zuidaheshuzu {
         return total;
     }
 
+    static int solution3(int[] array) {
+        int n = array.length;
+        int[] tail = new int[n];
+        tail[0] = array[0];
+        int total = array[0];
+        for (int i = 1; i < n; i++) {
+            tail[i] = Math.max(array[i], tail[i - 1] + array[i]);
+            if (tail[i] > total) {
+                total = tail[i];
+            }
+        }
+//        int total = Integer.MIN_VALUE;
+//        for (int i = 0; i < n; i++) {
+//            if (tail[i] > total) {
+//                total = tail[i];
+//            }
+//        }
+        return total;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
