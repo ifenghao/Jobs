@@ -1,4 +1,4 @@
-package exercise.dp;
+package exercise.others;
 
 import java.util.Scanner;
 import java.util.Stack;
