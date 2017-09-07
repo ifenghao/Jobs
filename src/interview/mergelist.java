@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
- * Created by fenghao.zfh on 2017/9/7.
+ * 合并2个或多个有序链表
  */
 public class mergelist {
     static class Node {
