@@ -98,7 +98,7 @@ public class Sort {
         merge(array, lo, mid, hi);
     }
 
-    public static int partation(int[] array, int lo, int hi) {
+    public static int partition(int[] array, int lo, int hi) {
         int i = lo + 1, j = hi;
         int point = array[lo];
         while (true) {
@@ -116,21 +116,36 @@ public class Sort {
         return j;
     }
 
+    public static int partition2(int[] array, int lo, int hi) {
+        int j = lo, point = array[hi], tmp;
+        for (int i = lo; i < hi; i++) {
+            if (array[i] < point) {
+                tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
+                j++;
+            }
+        }
+        array[hi] = array[j];
+        array[j] = point;
+        return j;
+    }
+
     public static void quickSort(int[] array, int lo, int hi) {
         if (lo >= hi) return;
-        int j = partation(array, lo, hi);
+        int j = partition2(array, lo, hi);
         quickSort(array, lo, j - 1);
         quickSort(array, j + 1, hi);
     }
 
-    public static int selectMedium(int[] array, int k, int lo, int hi) {
-        int j = partation(array, lo, hi);
+    public static int selectK(int[] array, int k, int lo, int hi) {
+        int j = partition2(array, lo, hi);
         if (j == k) {
             return array[j];
         } else if (j > k) {
-            return selectMedium(array, k, lo, j - 1);
+            return selectK(array, k, lo, j - 1);
         } else {
-            return selectMedium(array, k, j + 1, hi);
+            return selectK(array, k, j + 1, hi);
         }
     }
 
@@ -173,8 +188,9 @@ public class Sort {
     }
 
     public static void main(String[] args) {
-        int[] testArray = new int[]{10, 33, 4, 5, 62, 325, 5, 6, 1, 9, 6};
-        quickSort(testArray, 0, testArray.length - 1);
-        printArray(testArray);
+        int[] a = new int[]{10, 33, 4, 5, 62, 325, 5, 6, 1, 9, 6};
+        shuffle(a);
+        quickSort(a, 0, a.length - 1);
+        printArray(a);
     }
 }
