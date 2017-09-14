@@ -1,4 +1,4 @@
-package exercise.others;
+package exercise.num;
 
 /**
  * Created by zfh on 17-4-9.
