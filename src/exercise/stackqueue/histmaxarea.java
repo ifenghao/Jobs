@@ -1,4 +1,4 @@
-package exercise.others;
+package exercise.stackqueue;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -44,14 +44,48 @@ public class histmaxarea {
         System.out.println(maxArea);
     }
 
+    static void solution2(int n, int[] h) {
+        int[] dpl = new int[n + 2];
+        int[] dpr = new int[n + 2];
+        int k;
+        // 从左向右找每个点的左边界
+        for (int i = 1; i <= n; i++) {
+            k = i;
+            while (h[k - 1] >= h[i]) {
+                k = dpl[k - 1];// 直接跳转到k-1的左边界
+            }
+            dpl[i] = k;
+        }
+        // 从右向左找每个点的右边界
+        for (int i = n; i >= 1; i--) {
+            k = i;
+            while (h[k + 1] >= h[i]) {
+                k = dpr[k + 1];// 直接跳转到k+1的右边界
+            }
+            dpr[i] = k;
+        }
+        int maxArea = 0, tmpArea;
+        for (int i = 1; i <= n; i++) {
+            tmpArea = h[i] * (dpr[i] - dpl[i] + 1);
+            if (tmpArea > maxArea) maxArea = tmpArea;
+        }
+        System.out.println(maxArea);
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[] h = new int[n + 1];
-        for (int i = 0; i < n; i++) {
+//        int[] h = new int[n + 1];
+//        for (int i = 0; i < n; i++) {
+//            h[i] = sc.nextInt();
+//        }
+//        h[n] = -1;// 哨兵
+//        solution(n, h);
+        int[] h = new int[n + 2];
+        for (int i = 1; i <= n; i++) {
             h[i] = sc.nextInt();
         }
-        h[n] = -1;
-        solution(n, h);
+        h[0] = h[n + 1] = -1;// 哨兵
+        solution2(n, h);
     }
 }
