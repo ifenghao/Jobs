@@ -5,7 +5,8 @@ import java.util.Queue;
 import java.util.Scanner;
 
 /**
- * Created by zfh on 17-4-22.
+ * 走出迷宫的最少步数
+ * 广搜
  */
 public class migong {
     static final int N = 10;
