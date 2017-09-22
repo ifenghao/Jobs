@@ -1,4 +1,4 @@
-package interview;
+package exercise.sort;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

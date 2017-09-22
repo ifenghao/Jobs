@@ -1,4 +1,4 @@
-package interview;
+package exercise.stackqueue;
 
 public class PriorityQueue {
     private int[] pq;

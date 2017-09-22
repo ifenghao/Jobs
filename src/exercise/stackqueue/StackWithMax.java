@@ -1,6 +1,5 @@
-package interview;
+package exercise.stackqueue;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
