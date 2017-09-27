@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
- * 括号匹配，匹配的序列中一定是最左边为(，最右边为)
+ * 括号匹配最长连续子串，匹配的序列中一定是最左边为(，最右边为)
  */
 public class matchbracket {
     static void solution(char[] bracket) {
