@@ -36,7 +36,7 @@ public class histmaxarea {
                     start = stack.pop();
                     tmpArea = (i - start) * h[start];// 先对中间较大高度的元素计算面积
                     if (tmpArea > maxArea) maxArea = tmpArea;
-                }// 较小元素的构成的面积后算
+                }// 两侧较小高度的元素的构成的面积后算
                 stack.push(start);// 关键是入栈上一个出栈的位置索引，表示以h[i]为高的矩形宽度可以从i到start
                 h[start] = h[i];// 保存当前h[i]到这个索引，方便后续取值
             }
