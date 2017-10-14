@@ -45,6 +45,33 @@ public class histmaxarea {
     }
 
     static void solution2(int n, int[] h) {
+        Stack<Integer> stack = new Stack<>();
+        int maxArea = 0, idx, tmpArea;
+        for (int i = 0; i < n; i++) {
+            while (!stack.isEmpty() && h[stack.peek()] > h[i]) {// 保持栈里的元素递增
+                idx = stack.pop();
+                if (stack.isEmpty()) {// 栈所有元素都比h[i]大
+                    tmpArea = i * h[idx];// 当前高度可以延续到首元素
+                } else {
+                    tmpArea = (i - stack.peek() - 1) * h[idx];// 当前高度可以延续到栈顶元素的下一个
+                }
+                if (tmpArea > maxArea) maxArea = tmpArea;
+            }
+            stack.push(i);
+        }
+        while (!stack.isEmpty()) {// 继续比较剩下元素
+            idx = stack.pop();
+            if (stack.isEmpty()) {
+                tmpArea = n * h[idx];
+            } else {
+                tmpArea = (n - stack.peek() - 1) * h[idx];
+            }
+            if (tmpArea > maxArea) maxArea = tmpArea;
+        }
+        System.out.println(maxArea);
+    }
+
+    static void solution3(int n, int[] h) {
         int[] dpl = new int[n + 2];
         int[] dpr = new int[n + 2];
         int k;
@@ -80,12 +107,17 @@ public class histmaxarea {
 //            h[i] = sc.nextInt();
 //        }
 //        h[n] = -1;// 哨兵
-//        solution(n, h);
-        int[] h = new int[n + 2];
-        for (int i = 1; i <= n; i++) {
+//        solution2(n, h);
+        int[] h = new int[n];
+        for (int i = 0; i < n; i++) {
             h[i] = sc.nextInt();
         }
-        h[0] = h[n + 1] = -1;// 哨兵
         solution2(n, h);
+//        int[] h = new int[n + 2];
+//        for (int i = 1; i <= n; i++) {
+//            h[i] = sc.nextInt();
+//        }
+//        h[0] = h[n + 1] = -1;// 哨兵
+//        solution3(n, h);
     }
 }
