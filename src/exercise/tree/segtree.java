@@ -122,7 +122,7 @@ public class segtree {
         return res;
     }
 
-    // 数据离散化，将a数组所有值映射到1~n之间
+    // 数据离散化，将a数组所有值映射到0~n-1之间
     static int[] scatter(int[] a) {
         int n = a.length;
         int[][] m = new int[n][2];

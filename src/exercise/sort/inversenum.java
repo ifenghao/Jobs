@@ -13,6 +13,7 @@ import static java.lang.Math.*;
  * 4 线段树法 O(nlogn)
  */
 public class inversenum {
+    ////////////////////////////////////////////////////////////////////////////////
     static void insertCount(int[] a) {
         int n = a.length;
         int cnt = 0;
@@ -24,6 +25,7 @@ public class inversenum {
         System.out.println(cnt);
     }
 
+    ////////////////////////////////////////////////////////////////////////////////
     static void mergeCount(int[] a) {
         aux = new int[a.length];
         mergeHelper(a, a.length, 0, a.length - 1);
@@ -56,7 +58,7 @@ public class inversenum {
         }
     }
 
-
+    ////////////////////////////////////////////////////////////////////////////////
     static void treearrayCount(int[] a) {
         int n = a.length;
         a = scatter(a);
@@ -64,7 +66,7 @@ public class inversenum {
         int cnt = 0;
         for (int i = 1; i <= n; i++) {
             add(tree, a[i - 1], 1);
-            cnt += i - getSum(tree, a[i - 1]);
+            cnt += i - getSum(tree, a[i - 1]);// 所有元素个数减去小于等于a的元素个数
         }
         System.out.println(cnt);
     }
@@ -85,16 +87,18 @@ public class inversenum {
         return sum;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////
     static void segtreeCount(int[] a) {
         int n = a.length;
         a = scatter(a);
         tree = new int[(int) pow(2, ceil(log((double) n) / log(2.0)) + 1) - 1];
-        build(0, a, 0, n - 1);
+        // 线段树不用build，初始值都为0
         int cnt = 0;
         for (int i = 0; i < n; i++) {
-            update(0, 0, n - 1, a[i], 1);
-            cnt += query(0, 0, n - 1, a[i] + 1, tree.length - 1);
+            update(0, 0, n - 1, a[i] - 1, 1);
+            cnt += query(0, 0, n - 1, a[i], tree.length - 1);// 查询a元素之后的元素个数
         }
+        System.out.println(cnt);
     }
 
     static int[] tree;
@@ -129,6 +133,7 @@ public class inversenum {
         }
     }
 
+    // 数据离散化，将a数组所有值映射到1~n之间
     static int[] scatter(int[] a) {
         int n = a.length;
         int[][] m = new int[n][2];
@@ -155,5 +160,6 @@ public class inversenum {
 //        insertCount(a);
 //        mergeCount(a);
         treearrayCount(a);
+        segtreeCount(a);
     }
 }
