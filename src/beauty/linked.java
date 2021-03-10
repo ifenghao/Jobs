@@ -72,6 +72,20 @@ public class linked {
         return headNode;
     }
 
+    static Node reverse2(Node headNode) {
+        if (headNode == null) return headNode;
+        Node nextNode = headNode.next;
+        Node preNode = null;
+        while (nextNode != null) {
+            headNode.next = preNode;
+            preNode = headNode;
+            headNode = nextNode;
+            nextNode = headNode.next;
+        }
+        headNode.next = preNode; // 此时headNode与preNode处于断开状态
+        return headNode;
+    }
+
     // 单链表的转置
     // 递归形式
     static Node reverseRecursive(Node headNode) {
