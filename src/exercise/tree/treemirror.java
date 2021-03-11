@@ -14,8 +14,7 @@ public class treemirror {
         }
     }
 
-    static Node build() {
-        int[] a = new int[]{0, 1, 2, 3, 4, 5, 6, 7, -1, 9, -1, 11, -1, -1, 14};
+    static Node build(int[] a) {
         Node root = new Node(a[0]);
         Deque<Node> dq = new LinkedList<>();
         dq.addLast(root);
@@ -23,115 +22,89 @@ public class treemirror {
         Node tmpNode;
         while (!dq.isEmpty()) {
             tmpNode = dq.removeFirst();
-            if (tmpNode.val >= 0) {
-                if (++i < a.length) {
-                    if (a[i] >= 0) {
-                        tmpNode.left = new Node(a[i]);
-                        dq.addLast(tmpNode.left);
-                    } else {
-                        dq.addLast(new Node(a[i]));
-                    }
+            if (tmpNode.val < 0) continue;
+            if (++i < a.length) {
+                if (a[i] >= 0) {
+                    tmpNode.left = new Node(a[i]);
+                    dq.addLast(tmpNode.left);
+                } else {
+                    dq.addLast(new Node(a[i]));
                 }
-                if (++i < a.length) {
-                    if (a[i] >= 0) {
-                        tmpNode.right = new Node(a[i]);
-                        dq.addLast(tmpNode.right);
-                    } else {
-                        dq.addLast(new Node(a[i]));
-                    }
+            }
+            if (++i < a.length) {
+                if (a[i] >= 0) {
+                    tmpNode.right = new Node(a[i]);
+                    dq.addLast(tmpNode.right);
+                } else {
+                    dq.addLast(new Node(a[i]));
                 }
             }
         }
         return root;
     }
 
-    static void preOrder(Node root) {
-        if (root == null) return;
-        System.out.print(root.val + " ");
-        preOrder(root.left);
-        preOrder(root.right);
-    }
-
-    static void preOrder2(Node root) {
-        if (root == null) return;
-        Stack<Node> stack = new Stack<>();
-        Node cur = root;
-        while (cur != null || !stack.isEmpty()) {
-            while (cur != null) {
-                System.out.print(cur.val + " ");// 入栈先打印当前节点
-                stack.push(cur);// 入栈所有左子节点
-                cur = cur.left;
+    // 分行打印二叉树
+    static void traverseBFS(Node root) {
+        Deque<Node> dq = new LinkedList<>();
+        dq.addFirst(root);
+        int curLayer = 1, nextLayer = 0;
+        Node tmpNode;
+        while (!dq.isEmpty()) {
+            tmpNode = dq.removeLast();
+            System.out.print(tmpNode.val + " ");
+            if (tmpNode.left != null) {
+                dq.addFirst(tmpNode.left);
+                nextLayer++;
             }
-            cur = stack.pop();
-            cur = cur.right;// 出栈直接找右子节点
-        }
-    }
-
-    static void inOrder(Node root) {
-        if (root == null) return;
-        inOrder(root.left);
-        System.out.print(root.val + " ");
-        inOrder(root.right);
-    }
-
-    static void inOrder2(Node root) {
-        if (root == null) return;
-        Stack<Node> stack = new Stack<>();
-        Node cur = root;
-        while (cur != null || !stack.isEmpty()) {
-            while (cur != null) {
-                stack.push(cur);// 入栈所有左子节点
-                cur = cur.left;
+            if (tmpNode.right != null) {
+                dq.addFirst(tmpNode.right);
+                nextLayer++;
             }
-            cur = stack.pop();
-            System.out.print(cur.val + " ");// 出栈即打印当前节点
-            cur = cur.right;// 出栈直接找右子节点
-        }
-    }
-
-    static void postOrder(Node root) {
-        if (root == null) return;
-        postOrder(root.left);
-        postOrder(root.right);
-        System.out.print(root.val + " ");
-    }
-
-    static void postOrder2(Node root) {
-        if (root == null) return;
-        Stack<Node> stack = new Stack<>();
-        Node cur = root, last = null;// 用于记录上一次访问的节点
-        while (cur != null) {// 入栈所有左子节点
-            stack.push(cur);
-            cur = cur.left;
-        }
-        while (!stack.isEmpty()) {
-            cur = stack.pop();
-            if (cur.right == null || cur.right == last) {// 没有右子节点或已经访问过右子节点
-                System.out.print(cur.val + " ");
-                last = cur;// 记录上次访问节点
-            } else {// 有右子节点且还没访问
-                stack.push(cur);// 重新入栈根节点
-                cur = cur.right;
-                while (cur != null) {// 入栈所有左子节点
-                    stack.push(cur);
-                    cur = cur.left;
-                }
+            if (--curLayer == 0) { // 当前层全部遍历完成，输出一个换行符
+                System.out.println();
+                curLayer = nextLayer;
+                nextLayer = 0;
             }
         }
+    }
+
+    // 二叉树镜像
+    static void mirror(Node root) {
+        if (root == null) return;
+        Node tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
+        mirror(root.left);
+        mirror(root.right);
+    }
+
+    // 是否中心对称二叉树
+    static boolean isSymmetrical(Node root) {
+        if (root == null) return true;
+        return isSymmetricalCore(root.left, root.right);
+    }
+
+    static boolean isSymmetricalCore(Node left, Node right) {
+        if (left == null && right == null)
+            return true;
+        if (left == null || right == null)
+            return false;
+
+        if (left.val != right.val)
+            return false;
+        return isSymmetricalCore(left.left, right.right) &&
+                isSymmetricalCore(left.right, right.left);
     }
 
     public static void main(String[] args) {
-        Node root = build();
-        preOrder(root);
-        System.out.println();
-        preOrder2(root);
-        System.out.println();
-        inOrder(root);
-        System.out.println();
-        inOrder2(root);
-        System.out.println();
-        postOrder(root);
-        System.out.println();
-        postOrder2(root);
+        int[] a = new int[]{0, 1, 2, 3, 4, 5, 6, 7, -1, 9, -1, 11, -1, -1, 14};
+        Node root = build(a);
+        traverseBFS(root);
+        mirror(root);
+        traverseBFS(root);
+
+        int[] b = new int[]{8, 6, 6, 5, 7, 7, 5, -1, 4, -1, -1, -1, -1, 4, -1};
+        Node root2 = build(b);
+        System.out.println(isSymmetrical(root2));
     }
 }
