@@ -114,6 +114,32 @@ public class linked {
         return slow;
     }
 
+    // 合并两个有序链表
+    static Node mergeSortedLinked(Node p1, Node p2) {
+        if (p1 == null) return p2;
+        else if (p2 == null) return p1;
+
+        Node head = null, pre = null, cur;
+        while (p1 != null && p2 != null) {
+            if (p1.data < p2.data) {
+                cur = p1;
+                p1 = p1.next;
+            } else {
+                cur = p2;
+                p2 = p2.next;
+            }
+            if (head == null) {
+                head = cur;
+            } else {
+                pre.next = cur;
+            }
+            pre = cur;
+        }
+        if (p1 != null) pre.next = p1;
+        else pre.next = p2;
+        return head;
+    }
+
     // 判断单链表是否有环
     // 设置两个指针一个一次一步，一个一次两步，若有环则两个指针必然相遇
     static boolean hasCircle(Node headNode) {
@@ -237,6 +263,10 @@ public class linked {
     }
 
     public static void main(String[] args) {
+        Node p1 = buildList(new int[]{0, 2, 4, 6});
+        Node p2 = buildList(new int[]{1, 3, 5, 7, 8});
+        printList(mergeSortedLinked(reverse2(p1), reverse2(p2)));
+
         Node headNode = buildList(new int[]{0, 1, 2, 3, 4, 5, 6});
         makeCircle(headNode, 3);
         System.out.println(circleEntrance(headNode).data);
