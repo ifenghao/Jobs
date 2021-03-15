@@ -120,6 +120,30 @@ public class traverse {
         }
     }
 
+    // 深度优先搜索树的路径和
+    static void findPathDFS(Node root, int sum) {
+        if (root == null) return;
+        Stack<Node> stack = new Stack<>();
+        findPathDFSCore(root, stack, sum);
+    }
+
+    static void findPathDFSCore(Node root, Stack<Node> stack, int sum) {
+        stack.push(root); // root一定非null，且stack非空栈
+        sum -= root.val; // 尝试将root添加进路径
+        if (sum == 0 && root.left == null && root.right == null) { // 检查当前路径和且为叶子节点
+            for (Node node : stack) {
+                System.out.print(node.val + " ");
+            }
+            System.out.println();
+        } else { // 继续扩展路径
+            if (root.left != null)
+                findPathDFSCore(root.left, stack, sum);
+            if (root.right != null)
+                findPathDFSCore(root.right, stack, sum);
+        }
+        stack.pop(); // 当前节点所有情况已经完成，需要退出stack
+    }
+
     public static void main(String[] args) {
         Node root = build();
         preOrder(root);
@@ -133,5 +157,7 @@ public class traverse {
         postOrder(root);
         System.out.println();
         postOrder2(root);
+
+        findPathDFS(root, 11);
     }
 }
