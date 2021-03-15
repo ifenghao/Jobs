@@ -3,6 +3,11 @@ package exercise.sort;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+/**
+ * 取数据流的中位数
+ * 最大堆pqMax保存小元素，最小堆pqMin保存大元素
+ * 奇数个时pqMax比pqMin多一个元素，偶数个时二者相等
+ */
 public class streammedian {
     private static PriorityQueue<Integer> pqMax = new PriorityQueue<>(new Comparator<Integer>() {
         @Override
