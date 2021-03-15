@@ -1,6 +1,6 @@
 package exercise.tree;
 
-public class sorttreekth {
+public class sorttree {
     static class Node {
         int val;
         Node left = null, right = null;
@@ -77,6 +77,7 @@ public class sorttreekth {
 
     static int cnt = 0;
 
+    // 排序二叉树寻找第k大的节点
     static Node kthNode(Node root, int k) {
         Node res = null;
         if (root.left != null) {
@@ -92,9 +93,54 @@ public class sorttreekth {
         return res;
     }
 
+    // 排序二叉树转双向链表
+    static Node treeToBinaryLinked(Node root) {
+        if (root == null) return root;
+        treeToBinaryLinkedCore(root, new Node[1]);
+
+        Node head = root; // 寻找构造链表的头结点
+        while (head.left != null)
+            head = head.left;
+        return head;
+    }
+
+    // Java单值引用在递归中无法传递，因此使用一个数组来保存中序遍历的最后一个节点
+    static void treeToBinaryLinkedCore(Node root, Node[] inOrderLast) {
+        if (root == null) return;
+        treeToBinaryLinkedCore(root.left, inOrderLast);
+
+        root.left = inOrderLast[0]; // 向前链接
+        if (inOrderLast[0] != null) {
+            inOrderLast[0].right = root; // 向后链接
+        }
+        inOrderLast[0] = root; // 更新中序遍历的最后一个节点
+
+        treeToBinaryLinkedCore(root.right, inOrderLast);
+    }
+
+    static void printBinaryLinked(Node head) {
+        if (head == null) return;
+        System.out.print("forward: ");
+        Node pre = head;
+        while (head != null) {
+            System.out.print(head.val + " ");
+            pre = head;
+            head = head.right;
+        }
+        head = pre;
+        System.out.print("\nbackward: ");
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.left;
+        }
+    }
+
     public static void main(String[] args) {
         int[] a = new int[]{4, 2, 6, 1, 3, 9, 0, 8, 7, 5};
         Node root = build(a);
         System.out.println(kthNode(root, 1).val);
+
+        Node head = treeToBinaryLinked(root);
+        printBinaryLinked(head);
     }
 }
