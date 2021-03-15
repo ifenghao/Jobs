@@ -1,10 +1,13 @@
 package exercise.stackqueue;
 
-public class PriorityQueue {
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+public class PriorityQueueMin {
     private int[] pq;
     private int N = 0;
 
-    PriorityQueue(int size) {
+    PriorityQueueMin(int size) {
         pq = new int[size + 1];
     }
 
@@ -59,13 +62,24 @@ public class PriorityQueue {
     }
 
     public static void main(String[] args) {
-        PriorityQueue pq = new PriorityQueue(10);
+        PriorityQueueMin pq = new PriorityQueueMin(10);
+        PriorityQueue<Integer> pqmin = new PriorityQueue<>();
+        PriorityQueue<Integer> pqmax = new PriorityQueue<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2 - o1;
+            }
+        });
         int[] a = new int[]{3, 2, 5, 7, 4, 8, 9, 6, 0};
         for (int i = 0; i < a.length; i++) {
             pq.add(a[i]);
+            pqmin.add(a[i]);
+            pqmax.add(a[i]);
         }
         for (int i = 0; i < a.length; i++) {
-            System.out.println(pq.poll());
+            System.out.print(pq.poll() + " ");
+            System.out.print(pqmin.poll() + " ");
+            System.out.println(pqmax.poll());
         }
     }
 }
