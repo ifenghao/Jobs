@@ -5,6 +5,10 @@ package beauty;
  * 对于条件while(lo<=hi)，退出前一定会满足lo==hi，
  * 这时只需要考虑mid=lo=hi时查询条件是否满足，
  * 不满足时尝试分别执行分支条件决定返回lo还是hi
+ *
+ * 对于条件while(lo<hi)，退出前一定会满足lo+1==hi
+ *
+ * 寻找上下界时，while(lo<=hi) -> 多加减1，while(lo<hi) -> 少加减1
  */
 public class bisearch {
     // 返回任意一个命中元素的索引
@@ -43,7 +47,7 @@ public class bisearch {
         return hitted ? lo : -1;
     }
 
-    // 返回命中元素的最小索引
+    // 返回命中元素的最小索引(和搜索下界步骤一样) while(<) -> hi少减1
     static int searchEqualMin2(int[] a, int key) {
         int lo = 0, hi = a.length - 1, mid;
         while (lo < hi) {// 不能<=否则lo==hi死循环
@@ -57,7 +61,7 @@ public class bisearch {
         return a[lo] == key ? lo : -1;// 退出时一定lo==hi，lo和hi都可以
     }
 
-    // 返回命中元素的最小索引(和搜索下界步骤一样)
+    // 返回命中元素的最小索引(和搜索下界步骤一样) while(<=) -> hi多减1
     static int searchEqualMin3(int[] a, int key) {
         int lo = 0, hi = a.length - 1, mid;
         while (lo <= hi) {// 可以lo==hi
@@ -90,7 +94,7 @@ public class bisearch {
         return hitted ? hi : -1;
     }
 
-    // 返回命中元素的最大索引
+    // 返回命中元素的最大索引(和搜索上界步骤一样) while(<) -> lo少加1
     static int searchEqualMax2(int[] a, int key) {
         int lo = 0, hi = a.length - 1, mid;
         while (lo < hi) {// 不能<=否则lo==hi死循环
@@ -104,7 +108,7 @@ public class bisearch {
         return a[lo] == key ? lo : -1;
     }
 
-    // 返回命中元素的最大索引(和搜索上界步骤一样)
+    // 返回命中元素的最大索引(和搜索上界步骤一样) while(<=) -> lo多加1
     static int searchEqualMax3(int[] a, int key) {
         int lo = 0, hi = a.length - 1, mid;
         while (lo <= hi) {// 可以lo==hi
@@ -118,7 +122,7 @@ public class bisearch {
         return a[hi] == key ? hi : -1;
     }
 
-    // 返回key的下界索引，即小于key的最大索引
+    // 返回key的下界索引，即小于key的最大索引 while(<=) -> hi多减1
     static int searchLowerBound(int[] a, int key) {
         int lo = 0, hi = a.length - 1, mid;
         while (lo <= hi) {
@@ -132,7 +136,7 @@ public class bisearch {
         return hi;
     }
 
-    // 返回key的下界索引，即小于key的最大索引
+    // 返回key的下界索引，即小于key的最大索引 while(<) -> hi少减1
     static int searchLowerBound2(int[] a, int key) {
         int lo = 0, hi = a.length - 1, mid;
         while (lo < hi) {
@@ -146,7 +150,7 @@ public class bisearch {
         return hi - 1;
     }
 
-    // 返回key的上界索引，即大于key的最小索引
+    // 返回key的上界索引，即大于key的最小索引 while(<=) -> lo多加1
     static int searchUpperBound(int[] a, int key) {
         int lo = 0, hi = a.length - 1, mid;
         while (lo <= hi) {
@@ -160,7 +164,7 @@ public class bisearch {
         return lo;
     }
 
-    // 返回key的上界索引，即大于key的最小索引
+    // 返回key的上界索引，即大于key的最小索引 while(<) -> lo少加1
     static int searchUpperBound2(int[] a, int key) {
         int lo = 0, hi = a.length - 1, mid;
         while (lo < hi) {
