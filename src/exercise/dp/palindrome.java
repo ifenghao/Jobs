@@ -2,15 +2,12 @@ package exercise.dp;
 
 import java.util.Scanner;
 
-/**
- * 最长回文序列
- * 最长回文子串
- */
 public class palindrome {
-    static void dpnc(String s) {
+    // 最长回文子序列，可不连续，dp[i][j]表示以i开始以j结束的片段中，回文子序列最大长度
+    static void dpxulie(String s) {
         int n = s.length();
         int[][] dp = new int[n][n];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) { // 初始条件为长度为1的子序列
             dp[i][i] = 1;
         }
         for (int l = 2; l <= n; l++) {
@@ -26,11 +23,12 @@ public class palindrome {
         System.out.println(dp[0][n - 1]);
     }
 
-    static void dpc(String s) {
+    // 最长回文子串，必须连续，dp[i][j]表示严格以i起始以j结尾的子串是否是回文
+    static void dpchuan(String s) {
         int n = s.length();
         boolean[][] dp = new boolean[n][n];
         dp[0][0] = true;
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < n; i++) { // 初始条件为长度为1和2的子串
             dp[i][i] = true;
             if (s.charAt(i - 1) == s.charAt(i)) {
                 dp[i - 1][i] = true;
@@ -44,7 +42,7 @@ public class palindrome {
                 int j = i + l - 1;
                 if (s.charAt(i) == s.charAt(j)) {
                     dp[i][j] = dp[i + 1][j - 1];
-                    if (dp[i][j] && j - i + 1 > maxLen) {
+                    if (dp[i][j] && j - i + 1 > maxLen) { // j - i + 1为当前子串长度
                         maxLen = j - i + 1;
                     }
                 } else {
@@ -90,5 +88,7 @@ public class palindrome {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
         manacher(s);
+        dpchuan(s);
+        dpxulie(s);
     }
 }
