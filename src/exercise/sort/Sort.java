@@ -102,17 +102,15 @@ public class Sort {
         int i = lo + 1, j = hi;
         int point = array[lo];
         while (true) {
-            while (i < hi && array[i] < point) i++;
-            while (j > lo && array[j] > point) j--;
+            while (i < hi && array[i] <= point) i++;
+            while (j > lo && array[j] >= point) j--;
             if (i >= j) break;
             int tmp = array[j];
             array[j] = array[i];
             array[i] = tmp;
         }
-        System.out.println(i + " " + j);
-        int tmp = array[j];
-        array[j] = array[lo];
-        array[lo] = tmp;
+        array[lo] = array[j];
+        array[j] = point;
         return j;
     }
 
