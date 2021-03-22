@@ -262,6 +262,48 @@ public class linked {
         return curNode1;
     }
 
+    // k个一组翻转链表
+    static Node reverseKGroup(Node head, int k) {
+        int cnt = k - 1;
+        Node newHead = null;
+        Node curStart, curEnd, preEnd = null, nextStart = null;
+        while (head != null && head.next != null) {
+            // 寻找长度为k的组
+            curStart = head;
+            while (cnt > 0 && head.next != null) {
+                head = head.next;
+                cnt--;
+            }
+            if (cnt != 0) break;
+            curEnd = head;
+            // 处理组间的衔接
+            if (preEnd != null) preEnd.next = curEnd; // 处理前驱
+            nextStart = curEnd.next; // 处理后继
+            // 翻转该组节点（头尾节点之间）
+            preEnd = reverseOneGroup(curStart, curEnd);
+            // 下一轮初始化
+            head = nextStart;
+            cnt = k - 1;
+            // 对第一组取头结点
+            if (newHead == null) newHead = curEnd;
+        }
+        if (cnt != 0) preEnd.next = nextStart; // 剩余不足k个直接连接
+        return newHead;
+    }
+
+    static Node reverseOneGroup(Node head, Node tail) {
+        if (head == tail) return head;
+        Node pre = null, next = head.next, newTail = head;
+        while (head != tail) {
+            head.next = pre;
+            pre = head;
+            head = next;
+            next = head.next;
+        }
+        head.next = pre;
+        return newTail;
+    }
+
     public static void main(String[] args) {
         Node p1 = buildList(new int[]{0, 2, 4, 6});
         Node p2 = buildList(new int[]{1, 3, 5, 7, 8});
@@ -275,6 +317,10 @@ public class linked {
         Node headNode2 = buildList(new int[]{9, 10, 11, 12});
         makeIntersected(headNode1, headNode2, 3);
         System.out.println(fistIntersectedNode(headNode1, headNode2).data);
+
+        Node headNode3 = buildList(new int[]{1, 2, 3, 4, 5});
+        headNode3 = reverse(headNode3);
+        printList(reverseKGroup(headNode3, 1));
     }
 
     static void makeCircle(Node headNode, int k) {
