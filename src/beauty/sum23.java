@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * Created by zfh on 17-5-3.
+ * 找到数组中和为sum的2个数、3个数
  */
 public class sum23 {
     static void sum2bs(int[] array, int sum) {
@@ -98,6 +99,31 @@ public class sum23 {
                     j++;
                 } else {
                     k--;
+                }
+            }
+        }
+    }
+
+    static void sum3nodup(int[] array, int sum) {
+        Arrays.sort(array);
+        int n = array.length, pre = Integer.MIN_VALUE;
+        int remain2, j, k;
+        for (int i = 0; i < n; i++) {
+            if (array[i] == pre) continue; // 控制首元素不重复
+            pre = array[i];
+            remain2 = sum - array[i];
+            j = i + 1;
+            k = n - 1;
+            while (j < k) {
+                int small = array[j], large = array[k];
+                if (small + large == remain2) {
+                    System.out.println(array[i] + " " + array[j] + " " + array[k]);
+                    while (array[j] == small && j < k) j++; // 指针首尾元素不重复
+                    while (array[k] == large && j < k) k--;
+                } else if (array[j] + array[k] < remain2) {
+                    while (array[j] == small && j < k) j++;
+                } else {
+                    while (array[k] == large && j < k) k--;
                 }
             }
         }
