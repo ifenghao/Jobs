@@ -1,5 +1,8 @@
 package exercise.dp;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 最长不含重复字母的连续子串
  * dp[i]保存以i结尾的最长不重复连续子串，那么dp[i]=
@@ -39,6 +42,27 @@ public class maxnonduplicate {
                 max = d;
         }
         return max;
+    }
+
+    // 使用滑动窗口
+    static int solution2(String s) {
+        char[] chars = s.toCharArray();
+        int n = chars.length, maxLen = 0, count;
+        int left = 0, right = 0;
+        char rchar, lchar;
+        Map<Character, Integer> window = new HashMap<>(); // 保存窗口内字符的出现次数
+        while (right < n) {
+            rchar = chars[right];
+            window.put(rchar, window.getOrDefault(rchar, 0) + 1); // 更新right字符出现次数
+            right++;
+            while (window.get(rchar) > 1) { // 检查right字符重复次数
+                lchar = chars[left];
+                window.put(lchar, window.get(lchar) - 1); // 从left字符开始去除重复
+                left++;
+            }
+            maxLen = Math.max(maxLen, right - left);
+        }
+        return maxLen;
     }
 
     public static void main(String[] args) {
