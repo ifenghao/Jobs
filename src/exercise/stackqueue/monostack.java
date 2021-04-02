@@ -29,10 +29,8 @@ public class monostack {
         int[] r = new int[n];
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && a[i] >= stack.peek()) {// 保证栈元素递减
-                stack.pop();
-            }
-            if (stack.isEmpty()) {
+            if (i > 0 && a[i] <= stack.peek()) {// 小于栈顶则栈清空，保证栈元素连续且递增
+                stack.clear();
                 r[i] = 1;
             } else {
                 r[i] = stack.size() + 1;
