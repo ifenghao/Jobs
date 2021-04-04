@@ -7,6 +7,7 @@ import java.util.*;
  * 找到数组中和为sum的2个数、3个数
  */
 public class sum23 {
+    // O(nlog(n))
     static void sum2bs(int[] array, int sum) {
         Arrays.sort(array);
         int n = array.length;
@@ -36,6 +37,7 @@ public class sum23 {
         return -1;
     }
 
+    // O(nlog(n))
     static void sum2bt(int[] array, int sum) {
         Arrays.sort(array);
         int n = array.length;
@@ -53,6 +55,7 @@ public class sum23 {
         }
     }
 
+    // O(n)
     static void sum2hash(int[] array, int sum) {
         int n = array.length;
         Set<Integer> set = new HashSet<>();
@@ -67,6 +70,7 @@ public class sum23 {
         }
     }
 
+    // O(n^2log(n))
     static void sum3bs(int[] array, int sum) {
         Arrays.sort(array);
         int n = array.length;
@@ -82,15 +86,16 @@ public class sum23 {
         }
     }
 
+    // O(n^2) 3个数可以重复
     static void sum3bt(int[] array, int sum) {
         Arrays.sort(array);
         int n = array.length;
         int remain2, j, k;
         for (int i = 0; i < n; i++) {
             remain2 = sum - array[i];
-            j = i;// 如果一个数只使用一次则j=i+1
+            j = i;// 可重复
             k = n - 1;
-            while (j <= k) {// 如果一个数只使用一次则条件为j<k
+            while (j <= k) {// 可重复
                 if (array[j] + array[k] == remain2) {
                     System.out.println(array[i] + " " + array[j] + " " + array[k]);
                     j++;
@@ -104,6 +109,7 @@ public class sum23 {
         }
     }
 
+    // O(n^2) 3个数不能重复
     static void sum3nodup(int[] array, int sum) {
         Arrays.sort(array);
         int n = array.length, pre = Integer.MIN_VALUE;
