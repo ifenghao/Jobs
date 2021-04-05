@@ -35,6 +35,14 @@ import java.util.Map;
  * 输入: s = "bbbbb"
  * 输出: 1
  * 解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+ *
+ * 4、长度最小的子数组
+ * 给定一个含有 n 个正整数的数组和一个正整数 target 。找出该数组中满足其和 ≥ target 的长度最小的连续子数组 
+ * [numsl, numsl+1, ..., numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。
+ * 示例 1：
+ * 输入：target = 7, nums = [2,3,1,2,4,3]
+ * 输出：2
+ * 解释：子数组 [4,3] 是该条件下的长度最小的子数组。
  */
 
 public class slidingwindow {
@@ -121,6 +129,23 @@ public class slidingwindow {
         return maxLen;
     }
 
+    // 4、长度最小的子数组
+    static int minSubArrayLen(int target, int[] nums) {
+        int n = nums.length, len, minLen = n + 1, winSum = 0;
+        int left = 0, right = 0;
+        while (right < n) {
+            winSum += nums[right];
+            right++;
+            while (winSum >= target) {
+                len = right - left;
+                if (len < minLen) minLen = len;
+                winSum -= nums[left];
+                left++;
+            }
+        }
+        return minLen > n ? 0 : minLen;
+    }
+
     public static void main(String[] args) {
         String s = "ADOBECODEBANC", t = "ABC";
         System.out.println(minWindow(s, t));
@@ -130,5 +155,8 @@ public class slidingwindow {
 
         String ss = "pwwkew";
         System.out.println(lengthOfLongestSubstring(ss));
+
+        int[] nums = new int[]{2,3,1,2,4,3};
+        System.out.println(minSubArrayLen(7, nums));
     }
 }
