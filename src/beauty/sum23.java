@@ -114,7 +114,7 @@ public class sum23 {
         Arrays.sort(array);
         int n = array.length, pre = Integer.MIN_VALUE;
         int remain2, j, k;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n - 2; i++) {
             if (array[i] == pre) continue; // 控制首元素不重复
             pre = array[i];
             remain2 = sum - array[i];
@@ -133,6 +133,36 @@ public class sum23 {
                 }
             }
         }
+    }
+
+    // O(n^2)，求和最接近target的3个数
+    static int sum3Closest(int[] array, int target) {
+        Arrays.sort(array);
+        int n = array.length;
+        int j, k, sum, diff;
+        int res = array[0] + array[1] + array[2];
+        for (int i = 0; i < n - 2; i++) {
+            if (i > 0 && array[i] == array[i - 1]) {
+                continue;
+            }
+            j = i + 1;
+            k = n - 1;
+            while (j < k) {
+                sum = array[i] + array[j] + array[k];
+                diff = sum - target;
+                if (Math.abs(diff) < Math.abs(res - target)) {
+                    res = sum;
+                }
+                if (diff == 0) {
+                    return target;
+                } else if (diff > 0) {
+                    k--;
+                } else {
+                    j++;
+                }
+            }
+        }
+        return res;
     }
 
     public static void main(String[] args) {
