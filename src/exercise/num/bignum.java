@@ -1,8 +1,11 @@
 package exercise.num;
 
+import java.util.Arrays;
+
 /**
- * 用String表示大数的加减
+ * 用String表示大数的加减乘
  * 通过转化为相应的char数组进行逐位加减，将进位/借位考虑到下一位的计算中
+ * 乘法计算中，直接保存每一位整数结果，最后统一处理进位
  */
 
 public class bignum {
@@ -69,10 +72,38 @@ public class bignum {
             res[i] = (char) (elementSubstract + '0');
         }
         StringBuilder resStr = new StringBuilder();
+        boolean isHeadZeros = true;
         for (char element: res) {
-            if (element != '0') resStr.append(element);
+            if (element == '0' && isHeadZeros) continue;
+            resStr.append(element);
+            isHeadZeros = false;
         }
         return sign + resStr.toString();
+    }
+
+    static String multiply(String x, String y) {
+        if (x.equals("0") || y.equals("0")) return "0";
+        char[] chx = x.toCharArray();
+        char[] chy = y.toCharArray();
+        int lx = chx.length, ly = chy.length;
+        int[] res = new int[lx + ly];
+        for (int i = lx - 1; i >= 0; i--) {
+            for (int j = ly - 1; j >= 0; j--) {
+                res[i + j + 1] += (chx[i] - '0') * (chy[j] - '0');
+            }
+        }
+        for (int i = lx + ly - 1; i > 0; i--) {
+            res[i - 1] += res[i] / 10;
+            res[i] %= 10;
+        }
+        StringBuilder resStr = new StringBuilder();
+        boolean isHeadZeros = true;
+        for (int element: res) {
+            if (element == 0 && isHeadZeros) continue;
+            resStr.append(element);
+            isHeadZeros = false;
+        }
+        return resStr.toString();
     }
 
     public static void main(String[] args) {
@@ -85,5 +116,10 @@ public class bignum {
         System.out.println(123456 - 999999);
         System.out.println(substract("10000", "9999"));
         System.out.println(10000 - 9999);
+
+        System.out.println(multiply("1234", "999999"));
+        System.out.println(1234 * 999999);
+        System.out.println(multiply("123", "456"));
+        System.out.println(123 * 456);
     }
 }
