@@ -1,7 +1,9 @@
 package exercise.backtrace;
 
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 
 public class permutecombine {
     static void swap(char[] chars, int i, int j) {
@@ -46,9 +48,27 @@ public class permutecombine {
         combineCore(chars, dq, start + 1, nSelect);
     }
 
+    // 通过记录子集来得到组合结果
+    static List<List<Character>> subsets(char[] chars) {
+        List<List<Character>> result = new ArrayList<>();
+        result.add(new ArrayList<>());
+        int size;
+        for (int i = 0; i < chars.length; i++) {
+            size = result.size();
+            for (int j = 0; j < size; j++) { // 对当前所有子集添加i元素
+                List<Character> tmp = new ArrayList<>(result.get(j));
+                tmp.add(chars[i]);
+                result.add(tmp);
+                System.out.println(tmp);
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         String x = "abc";
         permute(x.toCharArray(), 0);
         combine(x.toCharArray());
+        subsets(x.toCharArray());
     }
 }
