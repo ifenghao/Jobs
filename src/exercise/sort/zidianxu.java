@@ -1,4 +1,4 @@
-package exercise.tree;
+package exercise.sort;
 
 import java.util.Scanner;
 
