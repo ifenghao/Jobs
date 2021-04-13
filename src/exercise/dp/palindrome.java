@@ -28,15 +28,16 @@ public class palindrome {
         int n = s.length();
         boolean[][] dp = new boolean[n][n];
         dp[0][0] = true;
+        int maxLen = 1;
         for (int i = 1; i < n; i++) { // 初始条件为长度为1和2的子串
             dp[i][i] = true;
             if (s.charAt(i - 1) == s.charAt(i)) {
                 dp[i - 1][i] = true;
+                maxLen = 2;
             } else {
                 dp[i - 1][i] = false;
             }
         }
-        int maxLen = 0;
         for (int l = 3; l <= n; l++) {
             for (int i = 0; i <= n - l; i++) {
                 int j = i + l - 1;
