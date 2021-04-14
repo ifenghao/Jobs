@@ -20,13 +20,17 @@ import java.util.Scanner;
 public class maxcommonsubs {
     // 最长公共子串，必须连续，dp[i][j]表示a的长度为i前缀与b的长度为j前缀的公共连续子串长度，子串必须以i-1和j-1结尾
     static void zichuan(char[] a, char[] b) {
-        int n1 = a.length;
-        int n2 = b.length;
-        int[][] dp = new int[n1 + 1][n2 + 1];
+        int m = a.length;
+        int n = b.length;
+        int[][] dp = new int[m + 1][n + 1];
         int maxLen = 0;
-        for (int i = 1; i <= n1; i++) {
-            for (int j = 1; j <= n2; j++) {
-                dp[i][j] = a[i - 1] == b[j - 1] ? dp[i - 1][j - 1] + 1 : 0; // 不等时子串重新开始计算长度
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (a[i - 1] == b[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else { // 不等时子串重新开始计算长度
+                    dp[i][j] = 0;
+                }
                 if (maxLen < dp[i][j])
                     maxLen = dp[i][j];
             }
@@ -36,23 +40,15 @@ public class maxcommonsubs {
 
     // 最长公共子序列，可不连续，dp[i][j]表示a的长度为i前缀与b的长度为j前缀的公共连续子序列长度
     static void zixulie(char[] a, char[] b) {
-        int m = a.length + 1;
-        int n = b.length + 1;
-        int[][] dp = new int[m][n];
-        for (int i = 0; i < m; i++) {
-            dp[i][0] = 0;
-        }
-        for (int j = 0; j < n; j++) {
-            dp[0][j] = 0;
-        }
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
+        int m = a.length;
+        int n = b.length;
+        int[][] dp = new int[m + 1][n + 1];
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
                 if (a[i - 1] == b[j - 1]) {
                     dp[i][j] = dp[i - 1][j - 1] + 1;
-                } else if (dp[i - 1][j] >= dp[i][j - 1]) { // 不等时子序列寻找最长的那一段
-                    dp[i][j] = dp[i - 1][j];
-                } else {
-                    dp[i][j] = dp[i][j - 1];
+                } else { // 不等时子序列寻找最长的那一段（和公共子串唯一差别）
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
                 }
             }
         }
