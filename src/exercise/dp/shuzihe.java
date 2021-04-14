@@ -38,7 +38,7 @@ import java.util.Scanner;
 public class shuzihe {
     static long method = 0;
 
-    // 回溯法超时
+    // 1、数字和：选取数组中的部分求和（回溯法超时）
     static void solution1BackTrace(int acc, int i, int sum, int[] array) {
         if (acc == sum) {
             ++method;
@@ -50,7 +50,8 @@ public class shuzihe {
         }
     }
 
-    static void solution1(int[] array, long[][] m, int sum) {
+    // 1、数字和：选取数组中的部分求和
+    static long solution1(int[] array, long[][] m, int sum) {
         int n = array.length;
         for (int i = 1; i <= sum; i++) {
             m[0][i] = 0;
@@ -67,8 +68,10 @@ public class shuzihe {
                 }
             }
         }
+        return m[n][sum];
     }
 
+    // 2、数字和：数组中数字全选，给每一位安排加减号
     static int solution2(int[] nums, int S) {
         int n = nums.length;
         int sum = 0;
@@ -102,8 +105,7 @@ public class shuzihe {
             array[i] = sc.nextInt();
         }
         long[][] m = new long[n + 1][sum + 1];
-        solution1(array, m, sum);
-        System.out.println(m[n][sum]);
+        System.out.println(solution1(array, m, sum));
 
         int[] nums = new int[]{1,0,0,0,0,0,0,0,0};
         System.out.println(solution2(nums, 1));
