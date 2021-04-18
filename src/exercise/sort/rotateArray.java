@@ -1,10 +1,12 @@
 package exercise.sort;
 
 /**
- * 旋转数组求最小值：二分查找
  * 旋转数组是一个有序数组循环移位后得到
+ * 1、旋转数组求最小值：二分查找
+ * 2、旋转数组查找元素
  */
 public class rotateArray {
+    // 1、旋转数组求最小值：二分查找
     static int bisearch(int[] x) {
         int lo = 0, hi = x.length - 1; // 最终lo指向前半数组末尾，hi指向后半数组开始
         if (x[lo] < x[hi]) return x[lo]; // 直接为非旋转数组，返回第一个即为最小元素
@@ -35,9 +37,9 @@ public class rotateArray {
         return min;
     }
 
-    // 旋转数组中没有重复元素
+    // 2、旋转数组查找元素（旋转数组中没有重复元素）
     static int bisearchTarget(int[] x, int target) {
-        int lo = 0, hi = x.length - 1; // 最终lo指向前半数组末尾，hi指向后半数组开始
+        int lo = 0, hi = x.length - 1;
         while (lo <= hi) { // 退出时指针相等
             int mid = lo + (hi - lo) / 2;
             if (target == x[mid])
