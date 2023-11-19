@@ -23,12 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed7a31a0-91db-43a2-a80e-143d4f934f4b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exercise/stackqueue/stackqueuetrans.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jobs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Jobs.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beauty/linked.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beauty/linked.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/num/Fibonacci.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/num/Fibonacci.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/sort/rotateArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/sort/rotateArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exercise/tree/treepathsum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exercise/tree/treesubstruct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,12 +56,13 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="ignore.preview.features.used" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Application.regexmatch">
+  <component name="RunManager" selected="Application.treepathsum">
     <configuration name="linked" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="beauty.linked" />
       <module name="Jobs" />
@@ -104,8 +102,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="rotate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exercise.sort.rotate" />
+    <configuration name="rotateArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exercise.sort.rotateArray" />
       <module name="Jobs" />
       <extension name="coverage">
         <pattern>
@@ -117,12 +115,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="rotateArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exercise.sort.rotateArray" />
+    <configuration name="treepathsum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exercise.tree.treepathsum" />
       <module name="Jobs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="exercise.sort.*" />
+          <option name="PATTERN" value="exercise.tree.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -145,11 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.treepathsum" />
         <item itemvalue="Application.regexmatch" />
         <item itemvalue="Application.linked" />
         <item itemvalue="Application.permutecombine" />
         <item itemvalue="Application.rotateArray" />
-        <item itemvalue="Application.rotate" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +160,7 @@
       <option name="presentableId" value="Default" />
       <updated>1699973979232</updated>
       <workItem from="1699973980255" duration="2009000" />
-      <workItem from="1700056296483" duration="27587000" />
+      <workItem from="1700056296483" duration="45164000" />
     </task>
     <servers />
   </component>
@@ -185,45 +183,45 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="626" y="301" key="#Notifications/0.0.1920.1032@0.0.1920.1032" timestamp="1700060490417" />
-    <state width="1869" height="233" key="GridCell.Tab.0.bottom" timestamp="1700368055865">
+    <state width="1869" height="213" key="GridCell.Tab.0.bottom" timestamp="1700401718514">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="233" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1700368055865" />
-    <state width="1869" height="233" key="GridCell.Tab.0.center" timestamp="1700368055865">
+    <state width="1869" height="213" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1700401718514" />
+    <state width="1869" height="213" key="GridCell.Tab.0.center" timestamp="1700401718513">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="233" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1700368055865" />
-    <state width="1869" height="233" key="GridCell.Tab.0.left" timestamp="1700368055865">
+    <state width="1869" height="213" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1700401718513" />
+    <state width="1869" height="213" key="GridCell.Tab.0.left" timestamp="1700401718513">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="233" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1700368055865" />
-    <state width="1869" height="233" key="GridCell.Tab.0.right" timestamp="1700368055865">
+    <state width="1869" height="213" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1700401718513" />
+    <state width="1869" height="213" key="GridCell.Tab.0.right" timestamp="1700401718513">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="233" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1700368055865" />
-    <state width="1869" height="330" key="GridCell.Tab.1.bottom" timestamp="1700290610019">
+    <state width="1869" height="213" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1700401718513" />
+    <state width="1869" height="232" key="GridCell.Tab.1.bottom" timestamp="1700401309050">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="330" key="GridCell.Tab.1.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1700290610019" />
-    <state width="1869" height="330" key="GridCell.Tab.1.center" timestamp="1700290610018">
+    <state width="1869" height="232" key="GridCell.Tab.1.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1700401309050" />
+    <state width="1869" height="232" key="GridCell.Tab.1.center" timestamp="1700401309050">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="330" key="GridCell.Tab.1.center/0.0.1920.1032@0.0.1920.1032" timestamp="1700290610018" />
-    <state width="1869" height="330" key="GridCell.Tab.1.left" timestamp="1700290610018">
+    <state width="1869" height="232" key="GridCell.Tab.1.center/0.0.1920.1032@0.0.1920.1032" timestamp="1700401309050" />
+    <state width="1869" height="232" key="GridCell.Tab.1.left" timestamp="1700401309050">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="330" key="GridCell.Tab.1.left/0.0.1920.1032@0.0.1920.1032" timestamp="1700290610018" />
-    <state width="1869" height="330" key="GridCell.Tab.1.right" timestamp="1700290610018">
+    <state width="1869" height="232" key="GridCell.Tab.1.left/0.0.1920.1032@0.0.1920.1032" timestamp="1700401309050" />
+    <state width="1869" height="232" key="GridCell.Tab.1.right" timestamp="1700401309050">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="330" key="GridCell.Tab.1.right/0.0.1920.1032@0.0.1920.1032" timestamp="1700290610018" />
+    <state width="1869" height="232" key="GridCell.Tab.1.right/0.0.1920.1032@0.0.1920.1032" timestamp="1700401309050" />
     <state x="441" y="149" key="SettingsEditor" timestamp="1700292849584">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="441" y="149" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1700292849584" />
-    <state x="539" y="0" width="840" height="1034" key="search.everywhere.popup" timestamp="1700292878611">
+    <state x="539" y="0" width="840" height="1034" key="search.everywhere.popup" timestamp="1700397302067">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="539" y="0" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1700292878611" />
+    <state x="539" y="0" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1700397302067" />
   </component>
 </project>
