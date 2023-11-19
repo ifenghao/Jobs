@@ -6,7 +6,22 @@ package exercise.sort;
  * 2、旋转数组查找元素
  */
 public class rotateArray {
-    // 1、旋转数组求最小值：二分查找
+    // 1、无重复旋转数组求最小值：二分查找
+    static int bisearchnodup(int[] x) {
+        int lo = 0, hi = x.length - 1; // 最终lo指向前半数组末尾，hi指向后半数组开始
+        if (x[lo] < x[hi]) return x[lo]; // 直接为非旋转数组，返回第一个即为最小元素
+        while (lo < hi - 1) { // 退出时指针相差1
+            int mid = lo + (hi - lo) / 2;
+            if (x[mid] > x[lo]) { // mid在前半数组，最小值在其后
+                lo = mid;
+            } else { // mid在后半数组，最小值在其前
+                hi = mid;
+            }
+        }
+        return x[hi];
+    }
+
+    // 1.1、有重复旋转数组求最小值：二分查找
     static int bisearch(int[] x) {
         int lo = 0, hi = x.length - 1; // 最终lo指向前半数组末尾，hi指向后半数组开始
         if (x[lo] < x[hi]) return x[lo]; // 直接为非旋转数组，返回第一个即为最小元素

@@ -51,6 +51,20 @@ public class linked {
         }
     }
 
+    // 在排序链表里删除重复节点
+    static void deleteDuplicateNode(Node curNode) {
+        if (curNode == null) return;
+        while (curNode.next != null) {
+            if (curNode.data == curNode.next.data) {
+                // deleteNode(curNode.next);
+                Node nextNode = curNode.next;
+                curNode.next = nextNode.next;
+                nextNode.next = null;
+            }
+            curNode = curNode.next;
+        }
+    }
+
     // 单链表的转置
     // 要求只遍历一遍
     static Node reverse(Node headNode) {
@@ -305,6 +319,11 @@ public class linked {
     }
 
     public static void main(String[] args) {
+        Node p = buildList(new int[]{0, 2, 2, 4, 6, 6});
+        printList(p);
+        deleteDuplicateNode(p);
+        printList(p);
+
         Node p1 = buildList(new int[]{0, 2, 4, 6});
         Node p2 = buildList(new int[]{1, 3, 5, 7, 8});
         printList(mergeSortedLinked(reverse2(p1), reverse2(p2)));
