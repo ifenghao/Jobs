@@ -28,14 +28,14 @@ public class treedepthdistance {
     // 求二叉树节点的最大距离
     static Memo maxDist(Node root) {
         if (root == null) {
-            return new Memo(-1, 0);
+            return new Memo(0, 0);
         }
         Memo lMemo = maxDist(root.left);
         Memo rMemo = maxDist(root.right);
-        Memo curMemo = new Memo(-1, 0);
+        Memo curMemo = new Memo(0, 0);
         curMemo.maxDepth = Math.max(lMemo.maxDepth, rMemo.maxDepth) + 1;// 当前最大深度是左右子树最大深度加1
         curMemo.maxDist = Math.max(lMemo.maxDist, rMemo.maxDist);// 当前最大距离存在于左右子树中
-        curMemo.maxDist = Math.max(curMemo.maxDist, lMemo.maxDepth + rMemo.maxDepth + 2);// 或者跨越了根节点
+        curMemo.maxDist = Math.max(curMemo.maxDist, lMemo.maxDepth + rMemo.maxDepth + 1);// 或者跨越了根节点
         return curMemo;
     }
 
@@ -43,13 +43,13 @@ public class treedepthdistance {
     static int maxDist2(Node root) {
         if (root == null) return 0;
         int maxDis = Math.max(maxDist2(root.left), maxDist2(root.right));// 当前最大距离存在于左右子树中
-        maxDis = Math.max(maxDis, maxDepth(root.left) + maxDepth(root.right) + 2);// 或者跨越了根节点
+        maxDis = Math.max(maxDis, maxDepth(root.left) + maxDepth(root.right) + 1);// 或者跨越了根节点
         return maxDis;
     }
 
     // 求二叉树节点的最大深度
     static int maxDepth(Node root) {
-        if (root == null) return -1;
+        if (root == null) return 0;
         int lDepth = maxDepth(root.left);// 左子树最大深度
         int rDepth = maxDepth(root.right);// 右子树最大深度
         return Math.max(lDepth, rDepth) + 1;// 当前最大深度是左右子树最大深度加1
@@ -124,6 +124,7 @@ public class treedepthdistance {
     public static void main(String[] args) {
         Node root = buildTree();
         Memo memo = maxDist(root);
+        System.out.println(maxDepth(root));
         System.out.println(memo.maxDist);
         System.out.println(maxDist2(root));
 

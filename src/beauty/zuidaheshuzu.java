@@ -19,6 +19,7 @@ import java.util.Scanner;
  * <p>
  * 输出例子:
  * 3
+ * ref https://blog.csdn.net/zhufenghao/article/details/70544156
  */
 public class zuidaheshuzu {
     static int solution(int[] array) {

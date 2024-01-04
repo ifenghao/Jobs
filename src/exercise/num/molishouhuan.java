@@ -22,6 +22,9 @@ import java.util.Scanner;
  * <p>
  * 输出例子:
  * 8 9 7
+ *
+ * 矩阵行、列变换可以完成移动和相加，于是构造出快速幂矩阵求解
+ * [[1 1 0] [0 1 1] [1 0 1]]*[[a][b][c]] = [[a+b][b+c][c+a]]
  */
 public class molishouhuan {
     static int[][] dot(int[][] A, int[][] B) {

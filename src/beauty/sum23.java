@@ -7,7 +7,7 @@ import java.util.*;
  * 找到数组中和为sum的2个数、3个数
  */
 public class sum23 {
-    // O(nlog(n))
+    // 1) O(nlog(n)) 二分查找差值
     static void sum2bs(int[] array, int sum) {
         Arrays.sort(array);
         int n = array.length;
@@ -37,7 +37,7 @@ public class sum23 {
         return -1;
     }
 
-    // O(nlog(n))
+    // 2) O(nlog(n)) 双指针头尾分别遍历
     static void sum2bt(int[] array, int sum) {
         Arrays.sort(array);
         int n = array.length;
@@ -55,7 +55,7 @@ public class sum23 {
         }
     }
 
-    // O(n)
+    // 3) O(n) 哈希查找差值
     static void sum2hash(int[] array, int sum) {
         int n = array.length;
         Set<Integer> set = new HashSet<>();
@@ -70,7 +70,7 @@ public class sum23 {
         }
     }
 
-    // O(n^2log(n))
+    // 1) O(n^2log(n)) 二分查找差值
     static void sum3bs(int[] array, int sum) {
         Arrays.sort(array);
         int n = array.length;
@@ -86,7 +86,7 @@ public class sum23 {
         }
     }
 
-    // O(n^2) 3个数可以重复
+    // 2) O(n^2) 3个数可以重复 双指针头尾分别遍历
     static void sum3bt(int[] array, int sum) {
         Arrays.sort(array);
         int n = array.length;

@@ -1,5 +1,6 @@
 package exercise.tree;
 
+// 判断树B是否是树A的子结构
 public class treesubstruct {
     static class TreeNode {
         int val;

@@ -55,17 +55,18 @@ public class shuanghe {
         return max;
     }
 
+    // 本题能用01背包解决是因为不要求两个核分配相同数量的任务，否则参考arraysplit
     public static void DP(int[] array, int[][] f) {
         int n = f.length - 1;
         int cap = f[0].length - 1;
-        for (int i = 0; i < cap + 1; i++) {
+        for (int i = 0; i <= cap; i++) {
             f[0][i] = 0;
         }
-        for (int i = 1; i < n + 1; i++) {
-            for (int j = 1; j < cap + 1; j++) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= cap; j++) {
                 int no = f[i - 1][j];
                 int yes = j < array[i - 1] ? 0 : f[i - 1][j - array[i - 1]] + array[i - 1];
-                f[i][j] = no >= yes ? no : yes;
+                f[i][j] = Math.max(no, yes);
             }
         }
     }
@@ -80,7 +81,7 @@ public class shuanghe {
             for (int j = cap; j >= 1; j--) {
                 int no = f[j];
                 int yes = j < array[i - 1] ? 0 : f[j - array[i - 1]] + array[i - 1];
-                f[j] = no >= yes ? no : yes;
+                f[j] = Math.max(no, yes);
             }
         }
     }

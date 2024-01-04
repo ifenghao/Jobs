@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class dicemethods {
     static void solution(int n, int[] dp) {
-        dp[1] = 1;
+        dp[1] = 1; // dp[n] = 最后一步是1（dp[n-1]） + 最后一步是2（dp[n-2]） +  + 最后一步是n-1（dp[1]）
         for (int i = 2; i <= n; i++) {
             for (int j = 1; j <= i - 1; j++) {
                 dp[i] += dp[j];

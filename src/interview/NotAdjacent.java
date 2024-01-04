@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 /**
  * Created by zfh on 17-5-12.
+ * ref https://blog.csdn.net/zhufenghao/article/details/71791777
  */
 public class NotAdjacent {
     static int solution(int[] array, int n) {

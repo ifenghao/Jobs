@@ -1,5 +1,6 @@
 package exercise.tree;
 
+// 二叉排序树
 public class sorttree {
     static class Node {
         int val;
@@ -77,7 +78,7 @@ public class sorttree {
 
     static int cnt = 0;
 
-    // 排序二叉树寻找第k大的节点
+    // 排序二叉树寻找第k大的节点，中序遍历即可从小到大找到第k个
     static Node kthNode(Node root, int k) {
         Node res = null;
         if (root.left != null) {
@@ -104,7 +105,7 @@ public class sorttree {
         return head;
     }
 
-    // Java单值引用在递归中无法传递，因此使用一个数组来保存中序遍历的最后一个节点
+    // Java单值引用在递归中无法传递，因此使用一个数组来保存中序遍历左子树的最后一个节点(即最大节点)
     static void treeToBinaryLinkedCore(Node root, Node[] inOrderLast) {
         if (root == null) return;
         treeToBinaryLinkedCore(root.left, inOrderLast);
@@ -113,7 +114,7 @@ public class sorttree {
         if (inOrderLast[0] != null) {
             inOrderLast[0].right = root; // 向后链接
         }
-        inOrderLast[0] = root; // 更新中序遍历的最后一个节点
+        inOrderLast[0] = root; // 更新中序遍历左子树的最后一个节点
 
         treeToBinaryLinkedCore(root.right, inOrderLast);
     }

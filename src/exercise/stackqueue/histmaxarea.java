@@ -19,6 +19,8 @@ import java.util.Stack;
  * <p>
  * 输出例子1:
  * 10
+ *
+ * 使用单调栈求解：栈里的元素是有序的，可以保证出栈的集合里有最大值出现
  */
 public class histmaxarea {
     static void solution(int n, int[] h) {

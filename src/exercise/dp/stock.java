@@ -6,6 +6,7 @@ package exercise.dp;
  * 无穷次交易
  * 两次交易
  * k次交易
+ * 无穷次交易但当天卖完第二天不能买入
  */
 public class stock {
     static void maxProfit1(int[] prices) {
@@ -14,16 +15,10 @@ public class stock {
             System.out.println(0);
             return;
         }
-        int profit = 0, min = prices[0], tmp;
+        int profit = 0, min = prices[0];
         for (int i = 1; i < n; i++) {
-            if (prices[i] < min) {
-                min = prices[i];
-            } else {
-                tmp = prices[i] - min;
-                if (tmp > profit) {
-                    profit = tmp;
-                }
-            }
+            min = Math.min(min, prices[i]);
+            profit = Math.max(profit, prices[i] - min);
         }
         System.out.println(profit);
     }
@@ -75,14 +70,14 @@ public class stock {
             System.out.println(0);
             return;
         }
-        int[][] loc = new int[n][k + 1];
-        int[][] glb = new int[n][k + 1];
+        int[][] loc = new int[n][k + 1]; // 局部解：第i天交易j次的最大收益，且第i天一定会发生第j次交易
+        int[][] glb = new int[n][k + 1]; // 全局解：第i天交易j次的最大收益
         int tmp;
         for (int i = 1; i < n; i++) {
             tmp = prices[i] - prices[i - 1];
             for (int j = 1; j <= k; j++) {
-                loc[i][j] = Math.max(glb[i - 1][j - 1], loc[i - 1][j] + tmp);
-                glb[i][j] = Math.max(loc[i][j], glb[i - 1][j]);
+                loc[i][j] = Math.max(glb[i - 1][j - 1], loc[i - 1][j] + tmp); // 前项表示tmp<=0第i天前已经易完成回退到i-1天j-1次交易的全局解，后项表示tmp>0第i天交易j合并入前一次
+                glb[i][j] = Math.max(loc[i][j], glb[i - 1][j]); // 前项表示第i天发生交易，后项表示第i天不发生交易
             }
         }
         System.out.println(glb[n - 1][k]);
@@ -98,7 +93,7 @@ public class stock {
             maxProfitInf(prices);
             return;
         }
-        int[] loc = new int[k + 1];
+        int[] loc = new int[k + 1]; // 逆向求解减少空间
         int[] glb = new int[k + 1];
         int tmp;
         for (int i = 1; i < n; i++) {
@@ -119,10 +114,10 @@ public class stock {
         }
         int buy = Integer.MIN_VALUE, pre_buy = 0, sell = 0, pre_sell = 0;
         for (int i = 0; i < n; i++) {
-            pre_buy = buy;
-            buy = Math.max(pre_sell - prices[i], pre_buy);
-            pre_sell = sell;
-            sell = Math.max(pre_buy + prices[i], pre_sell);
+            pre_buy = buy; // i-1天内上次操作为买入的最大收益
+            buy = Math.max(pre_sell - prices[i], pre_buy); // i天内上次操作为买入的最大收益，前项为第i天买入，后项为第i天不买入
+            pre_sell = sell; // i-1天内上次操作为卖出的最大收益
+            sell = Math.max(pre_buy + prices[i], pre_sell); // i天内上次操作为卖出的最大收益，前项为第i天卖出，后项为第i天不卖出
         }
         System.out.println(sell);
     }

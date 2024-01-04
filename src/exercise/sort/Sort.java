@@ -147,6 +147,21 @@ public class Sort {
         }
     }
 
+    // 非递归
+    public static int selectK2(int[] array, int k) {
+        int lo = 0, hi = array.length - 1;
+        int j = partition2(array, lo, hi);
+        while (j != k) {
+            if (j > k) {
+                hi = j - 1;
+            } else {
+                lo = j + 1;
+            }
+            j = partition2(array, lo, hi);
+        }
+        return array[j];
+    }
+
     public static int[] sortIndex(int[] array) {
         int length = array.length;
         int[] idx = new int[length];
@@ -187,6 +202,8 @@ public class Sort {
 
     public static void main(String[] args) {
         int[] a = new int[]{10, 33, 4, 5, 62, 325, 5, 6, 1, 9, 6};
+        System.out.println(selectK(a, 5, 0, a.length - 1));
+        System.out.println(selectK2(a, 5));
         shuffle(a);
         quickSort(a, 0, a.length - 1);
         printArray(a);

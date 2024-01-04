@@ -4,18 +4,33 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
- * 括号匹配最长连续子串，匹配的序列中一定是最左边为(，最右边为)
+ * 给你一个只包含 '(' 和 ')' 的字符串，找出最长有效（格式正确且连续）括号子串的长度。
+ * 匹配的序列中一定是最左边为(，最右边为)
+ * 示例 1：
+ *
+ * 输入：s = "(()"
+ * 输出：2
+ * 解释：最长有效括号子串是 "()"
+ * 示例 2：
+ *
+ * 输入：s = ")()())"
+ * 输出：4
+ * 解释：最长有效括号子串是 "()()"
+ * 示例 3：
+ *
+ * 输入：s = ""
+ * 输出：0
  */
 public class matchbracket {
     static void solution(char[] bracket) {
         int n = bracket.length;
-        int[] dp = new int[n + 1];
+        int[] dp = new int[n + 1]; // 以第i个括号结尾的最大匹配长度
         int max = 0;
         for (int i = 1; i <= n; i++) {
             if (bracket[i - 1] == '(') {// 当前括号无法匹配
                 dp[i] = 0;
             } else if (i >= 2) {
-                if (bracket[i - 2] == '(') {// i括号和前一括号匹配
+                if (bracket[i - 2] == '(') {// i括号和i-1括号匹配
                     dp[i] = dp[i - 2] + 2;
                 } else if (i >= dp[i - 1] + 2) {
                     if (bracket[i - dp[i - 1] - 2] == '(') {// i括号的前dp[i - 1]个的前一括号匹配

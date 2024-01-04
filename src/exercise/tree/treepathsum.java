@@ -42,6 +42,16 @@ public class treepathsum {
         return root;
     }
 
+    // 是否存在和为target的路径
+    static boolean existPathSum(TreeNode root, int target) {
+        if (root == null) return false;
+        if (root.left == null && root.right == null && root.val == target) { //先序遍历递归到叶子结点，且剩余target恰好为叶子节点数值
+            return true;
+        }
+        return existPathSum(root.left, target - root.val) || existPathSum(root.right, target - root.val);
+    }
+
+    // 求所有路径结果
     static List<List<Integer>> pathSum(TreeNode root, int target) {
         List<List<Integer>> result = new ArrayList<>();
         if (root != null){
@@ -70,6 +80,7 @@ public class treepathsum {
 
     public static void main(String[] args) {
         TreeNode root = build(new int[]{5,4,8,11,-1,13,4,7,2,-1,-1,5,1});
+        System.out.println(existPathSum(root, 22));
         System.out.println(pathSum(root, 22));
     }
 }

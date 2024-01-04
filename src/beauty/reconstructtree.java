@@ -3,7 +3,7 @@ package beauty;
 /**
  * Created by zfh on 17-5-13.
  */
-public class reconsbinary {
+public class reconstructtree {
     static class Node {
         int value;
         Node left, right;

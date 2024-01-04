@@ -45,6 +45,7 @@ public class maxrectangle {
         System.out.println(max);
     }
 
+    // 转化为一维柱状图中组成的最大矩形的面积
     static int histmax(int n, int[] h) {
         Stack<Integer> stack = new Stack<>();
         int maxArea = 0, idx, tmpArea;

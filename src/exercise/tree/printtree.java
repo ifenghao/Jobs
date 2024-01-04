@@ -71,6 +71,7 @@ public class printtree {
         }
     }
 
+    // 使用两个栈分别保存本层和下一层打印节点，两层入栈顺序相反
     static void printCrossLayer(Node root) {
         if (root == null) return;
         Stack<Node>[] stacks = new Stack[2];
@@ -104,6 +105,47 @@ public class printtree {
         }
     }
 
+    // 使用双向队列模拟双向栈，cur==0为尾栈出，头栈入；否则为头栈出，尾栈入
+    static void printCrossLayer2(Node root) {
+        if (root == null) return;
+        Deque<Node> deque = new LinkedList<>();
+        int printCnt = 1, nodeCnt = 0;
+        int cur = 0;
+        deque.addLast(root);
+        Node tmpNode;
+        while (!deque.isEmpty()) {
+            if (cur == 0) {
+                tmpNode = deque.removeLast(); // 本层节点从尾栈出
+                if (tmpNode.left != null) {
+                    deque.addFirst(tmpNode.left); // 下一层节点从头栈入
+                    nodeCnt++;
+                }
+                if (tmpNode.right != null) {
+                    deque.addFirst(tmpNode.right);
+                    nodeCnt++;
+                }
+            } else {
+                tmpNode = deque.removeFirst(); // 本层节点从头栈出
+                if (tmpNode.right != null) {
+                    deque.addLast(tmpNode.right); // 下一层节点从尾栈入
+                    nodeCnt++;
+                }
+                if (tmpNode.left != null) {
+                    deque.addLast(tmpNode.left);
+                    nodeCnt++;
+                }
+            }
+            System.out.print(tmpNode.val + " "); // 剩余操作和逐层打印相同
+            printCnt--;
+            if (printCnt == 0) {
+                System.out.println();
+                printCnt = nodeCnt;
+                nodeCnt = 0;
+                cur = 1 - cur;
+            }
+        }
+    }
+
     static void preOrder(Node root) {
         if (root == null) return;
         System.out.print(root.val + " ");
@@ -114,5 +156,6 @@ public class printtree {
     public static void main(String[] args) {
         Node root = build();
         printCrossLayer(root);
+        printCrossLayer2(root);
     }
 }

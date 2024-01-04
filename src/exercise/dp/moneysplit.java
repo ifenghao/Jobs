@@ -17,7 +17,7 @@ public class moneysplit {
         }
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= total; j++) {
-                for (int k = 0; k <= j / money[i - 1]; k++) {
+                for (int k = 0; k <= j / money[i - 1]; k++) { // 当前纸币选k张的总方法数
                     dp[i][j] += dp[i - 1][j - k * money[i - 1]];
                 }
             }

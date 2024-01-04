@@ -50,7 +50,7 @@ public class monostack {
         }
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && a[i] >= a[stack.peek()]) {// 保证栈元素递减
+            while (!stack.isEmpty() && a[i] > a[stack.peek()]) {// 保证栈元素递减
                 r[stack.pop()] = a[i];// 对栈顶元素，当前元素即为较大且距离最近
             }
             stack.add(i);
@@ -115,7 +115,7 @@ public class monostack {
     }
 
     public static void main(String[] args) {
-        int[] a = new int[]{2, 3, 1, 6, 4, 5};
+        int[] a = new int[]{2, 3, 1, 4, 4, 5};
 //        int[] r1 = solution4(a);
 //        for (int i : r1) {
 //            System.out.print(i + " ");

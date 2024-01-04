@@ -214,6 +214,7 @@ public class DP {
         }
     }
 
+    // 长度从小到大的求解顺序
     public static void palindrome(String[] s, int[][] dp, String[][] so) {
         int n = s.length;
         for (int i = 0; i < n; i++) {
@@ -222,6 +223,28 @@ public class DP {
         for (int l = 2; l <= n; l++) {
             for (int i = 0; i < n - l + 1; i++) {
                 int j = i + l - 1;
+                if (!s[i].equals(s[j])) {
+                    if (dp[i][j - 1] > dp[i + 1][j]) {
+                        dp[i][j] = dp[i][j - 1];
+                        so[i][j] = "left";
+                    } else {
+                        dp[i][j] = dp[i + 1][j];
+                        so[i][j] = "down";
+                    }
+                } else {
+                    dp[i][j] = dp[i + 1][j - 1] + 2;
+                    so[i][j] = "leftdown";
+                }
+            }
+        }
+    }
+
+    // 递推公式里i只依赖i+1，因此需要从右向左求解；j只依赖j-1，因此需要从左向右求解，且保证j > i
+    public static void palindrome2(String[] s, int[][] dp, String[][] so) {
+        int n = s.length;
+        for (int i = n - 1; i >= 0; i--) {
+            dp[i][i] = 1;
+            for (int j = i + 1; j < n; j++) {
                 if (!s[i].equals(s[j])) {
                     if (dp[i][j - 1] > dp[i + 1][j]) {
                         dp[i][j] = dp[i][j - 1];
@@ -308,7 +331,7 @@ public class DP {
         int n = s.length;
         int[][] dp = new int[n][n];
         String[][] so = new String[n][n];
-        palindrome(s, dp, so);
+        palindrome2(s, dp, so);
         System.out.println(dp[0][n - 1]);
         List<String> result = new ArrayList<>();
         palindromeSolution(s, so, 0, n - 1, result);

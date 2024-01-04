@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 /**
  * Created by zfh on 17-5-12.
+ * 有一个无序, 元素个数为2n的正整数数组.
+ * 要求: 如何能把这个数组分割为元素个数为n的两个数组, 并使两个子数组的和最接近
+ * https://blog.csdn.net/zhufenghao/article/details/71753477
  */
 public class arraysplit {
     static void wrongSolution(int[] array, int[][] s, int n, int sum) {

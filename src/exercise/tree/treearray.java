@@ -33,7 +33,7 @@ public class treearray {
         int[] tree = new int[n + 1];// tree数组记录a作为索引值出现的次数
         for (int i = 1; i <= n; i++) {
             add(tree, a[i - 1], 1);// a索引值出现次数加一
-            res[i - 1] = i - getSum(tree, a[i - 1]);// tree中a值之后数字出现次数
+            res[i - 1] = i - getSum(tree, a[i - 1]);// a值之后数字出现次数 = 前i个数减去tree中比a值小数字出现次数
         }
         return res;
     }

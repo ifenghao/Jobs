@@ -2,6 +2,10 @@ package exercise.dp;
 
 import java.util.Scanner;
 
+/**
+ * ref https://blog.csdn.net/zhufenghao/article/details/69790325
+ */
+
 public class palindrome {
     // 最长回文子序列，可不连续，dp[i][j]表示以i开始以j结束的片段中，回文子序列最大长度
     static void dpxulie(String s) {
@@ -14,6 +18,23 @@ public class palindrome {
             for (int i = 0; i < n - l + 1; i++) {
                 int j = i + l - 1;
                 if (s.charAt(i) != (s.charAt(j))) {
+                    dp[i][j] = Math.max(dp[i][j - 1], dp[i + 1][j]);
+                } else {
+                    dp[i][j] = dp[i + 1][j - 1] + 2;
+                }
+            }
+        }
+        System.out.println(dp[0][n - 1]);
+    }
+
+    // 递推公式里i只依赖i+1，因此需要从右向左求解；j只依赖j-1，因此需要从左向右求解，且保证j > i
+    static void dpxulie2(String s) {
+        int n = s.length();
+        int[][] dp = new int[n][n];
+        for (int i = n - 1; i >= 0; i--) {
+            dp[i][i] = 1;
+            for (int j = i + 1; j < n; j++) {
+                if (s.charAt(i) != s.charAt(j)) {
                     dp[i][j] = Math.max(dp[i][j - 1], dp[i + 1][j]);
                 } else {
                     dp[i][j] = dp[i + 1][j - 1] + 2;
@@ -54,6 +75,30 @@ public class palindrome {
         System.out.println(maxLen);
     }
 
+    static void dpchuan2(String s) {
+        int n = s.length();
+        boolean[][] dp = new boolean[n][n];
+        int maxLen = 1;
+        int begin = 0;
+        for (int i = 0; i < n; i++) { // 初始条件为长度为1和2的子串
+            dp[i][i] = true;
+        }
+        for (int i = n - 2; i >= 0; i--) {
+            for (int j = i + 1; j < n; j++) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    dp[i][j] = j - i == 1 ? true : dp[i + 1][j - 1]; // 子串长度为2时即为true
+                    if (dp[i][j] && j - i + 1 >= maxLen) { // j - i + 1为当前子串长度
+                        begin = i;
+                        maxLen = j - i + 1;
+                    }
+                } else {
+                    dp[i][j] = false;
+                }
+            }
+        }
+        System.out.println(maxLen + " " + s.substring(begin, begin + maxLen));
+    }
+
     static void manacher(String s) {
         int n = s.length();
         int m = n * 2 + 1;
@@ -90,6 +135,7 @@ public class palindrome {
         String s = sc.nextLine();
         manacher(s);
         dpchuan(s);
+        dpchuan2(s);
         dpxulie(s);
     }
 }

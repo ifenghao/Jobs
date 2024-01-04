@@ -23,6 +23,7 @@ import java.util.Scanner;
  * <p>
  * 输出例子:
  * 5
+ * ref https://blog.csdn.net/zhufenghao/article/details/69802667
  */
 
 public class zhuankuai {
