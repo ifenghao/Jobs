@@ -23,35 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed7a31a0-91db-43a2-a80e-143d4f934f4b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exercise/twopointer/lianxutargetsum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exercise/twopointer/sortarraytargetsum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exercise/greed/jumpgame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exercise/num/majoritynum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exercise/sort/rotateK.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exercise/twopointer/removetargetnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exercise/twopointer/sortarrayduplicate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beauty/arraysplit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beauty/arraysplit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beauty/reconsbinary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beauty/reconstructtree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beauty/sum23.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beauty/sum23.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beauty/treedepthdistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beauty/treedepthdistance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/beauty/zuidaheshuzu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/beauty/zuidaheshuzu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/dp/DP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/dp/DP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/dp/dicemethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/dp/dicemethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/dp/matchbracket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/dp/matchbracket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/dp/moneysplit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/dp/moneysplit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/dp/palindrome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/dp/palindrome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/dp/shuanghe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/dp/shuanghe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/dp/stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/dp/stock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/dp/zhuankuai.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/dp/zhuankuai.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/num/molishouhuan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/num/molishouhuan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/others/paidui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/others/paidui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/sort/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/sort/Sort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/sort/zidianxu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/sort/zidianxu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/stackqueue/histmaxarea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/stackqueue/histmaxarea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/stackqueue/maxrectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/stackqueue/maxrectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/stackqueue/monostack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/stackqueue/monostack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/tree/printtree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/tree/printtree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/tree/sorttree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/tree/sorttree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/tree/treearray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/tree/treearray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/tree/treepathsum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/tree/treepathsum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exercise/tree/treesubstruct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercise/tree/treesubstruct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interview/NotAdjacent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interview/NotAdjacent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exercise/sort/rotate.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,13 +66,13 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Application.TrieTree">
-    <configuration name="TrieTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exercise.tree.TrieTree" />
+  <component name="RunManager" selected="Application.jumpgame">
+    <configuration name="jumpgame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exercise.greed.jumpgame" />
       <module name="Jobs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="exercise.tree.*" />
+          <option name="PATTERN" value="exercise.greed.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -102,12 +80,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="monostack" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exercise.stackqueue.monostack" />
+    <configuration name="majoritynum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exercise.num.majoritynum" />
       <module name="Jobs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="exercise.stackqueue.*" />
+          <option name="PATTERN" value="exercise.num.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,12 +93,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="printtree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exercise.tree.printtree" />
+    <configuration name="removetargetnum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exercise.twopointer.removetargetnum" />
       <module name="Jobs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="exercise.tree.*" />
+          <option name="PATTERN" value="exercise.twopointer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -128,25 +106,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="treearray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exercise.tree.treearray" />
-      <module name="Jobs" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="exercise.tree.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="zidianxu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exercise.sort.zidianxu" />
+    <configuration name="rotateK" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exercise.sort.rotateK" />
       <module name="Jobs" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="exercise.sort.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="sortarrayduplicate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exercise.twopointer.sortarrayduplicate" />
+      <module name="Jobs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exercise.twopointer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -167,11 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TrieTree" />
-        <item itemvalue="Application.printtree" />
-        <item itemvalue="Application.monostack" />
-        <item itemvalue="Application.zidianxu" />
-        <item itemvalue="Application.treearray" />
+        <item itemvalue="Application.jumpgame" />
+        <item itemvalue="Application.rotateK" />
+        <item itemvalue="Application.majoritynum" />
+        <item itemvalue="Application.removetargetnum" />
+        <item itemvalue="Application.sortarrayduplicate" />
       </list>
     </recent_temporary>
   </component>
@@ -196,6 +174,15 @@
       <workItem from="1703085543328" duration="2000" />
       <workItem from="1703747190310" duration="5000" />
       <workItem from="1704333800155" duration="535000" />
+      <workItem from="1704679369592" duration="701000" />
+      <workItem from="1705327835012" duration="2589000" />
+      <workItem from="1705416050185" duration="3334000" />
+      <workItem from="1705419427862" duration="571000" />
+      <workItem from="1705454411048" duration="2190000" />
+      <workItem from="1705629767239" duration="2687000" />
+      <workItem from="1705886514015" duration="1084000" />
+      <workItem from="1705889615088" duration="3000" />
+      <workItem from="1705931527774" duration="15088000" />
     </task>
     <servers />
   </component>
@@ -223,22 +210,22 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="687" y="213" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1702949359827" />
-    <state width="1869" height="282" key="GridCell.Tab.0.bottom" timestamp="1701620808424">
+    <state width="1869" height="243" key="GridCell.Tab.0.bottom" timestamp="1706148372460">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1701620808424" />
-    <state width="1869" height="282" key="GridCell.Tab.0.center" timestamp="1701620808424">
+    <state width="1869" height="243" key="GridCell.Tab.0.bottom/0.0.1920.1032@0.0.1920.1032" timestamp="1706148372460" />
+    <state width="1869" height="243" key="GridCell.Tab.0.center" timestamp="1706148372460">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="282" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1701620808424" />
-    <state width="1869" height="282" key="GridCell.Tab.0.left" timestamp="1701620808424">
+    <state width="1869" height="243" key="GridCell.Tab.0.center/0.0.1920.1032@0.0.1920.1032" timestamp="1706148372460" />
+    <state width="1869" height="243" key="GridCell.Tab.0.left" timestamp="1706148372460">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="282" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1701620808424" />
-    <state width="1869" height="282" key="GridCell.Tab.0.right" timestamp="1701620808424">
+    <state width="1869" height="243" key="GridCell.Tab.0.left/0.0.1920.1032@0.0.1920.1032" timestamp="1706148372460" />
+    <state width="1869" height="243" key="GridCell.Tab.0.right" timestamp="1706148372460">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state width="1869" height="282" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1701620808424" />
+    <state width="1869" height="243" key="GridCell.Tab.0.right/0.0.1920.1032@0.0.1920.1032" timestamp="1706148372460" />
     <state width="1869" height="282" key="GridCell.Tab.1.bottom" timestamp="1701620808424">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
@@ -259,9 +246,9 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="441" y="149" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1700292849584" />
-    <state x="539" y="0" width="840" height="1034" key="search.everywhere.popup" timestamp="1700842414332">
+    <state x="539" y="0" width="840" height="1034" key="search.everywhere.popup" timestamp="1706148982457">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="539" y="0" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1700842414332" />
+    <state x="539" y="0" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1706148982457" />
   </component>
 </project>
