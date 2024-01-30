@@ -23,7 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed7a31a0-91db-43a2-a80e-143d4f934f4b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exercise/sort/mergeKsortlist.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +60,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="Application.reorderlinked">
+  <component name="RunManager" selected="Application.removecontains">
     <configuration name="jumpgame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="exercise.greed.jumpgame" />
       <module name="Jobs" />
@@ -88,12 +87,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="removetargetnum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="exercise.twopointer.removetargetnum" />
+    <configuration name="removecontains" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="interview.removecontains" />
       <module name="Jobs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="exercise.twopointer.*" />
+          <option name="PATTERN" value="interview.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.removecontains" />
         <item itemvalue="Application.reorderlinked" />
         <item itemvalue="Application.jumpgame" />
         <item itemvalue="Application.rotateK" />
         <item itemvalue="Application.majoritynum" />
-        <item itemvalue="Application.removetargetnum" />
       </list>
     </recent_temporary>
   </component>
@@ -179,7 +178,8 @@
       <workItem from="1705889615088" duration="3000" />
       <workItem from="1705931527774" duration="15240000" />
       <workItem from="1706192272852" duration="4810000" />
-      <workItem from="1706283261842" duration="1023000" />
+      <workItem from="1706283261842" duration="1069000" />
+      <workItem from="1706537970117" duration="1000" />
     </task>
     <servers />
   </component>
