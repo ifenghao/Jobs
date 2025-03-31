@@ -21,6 +21,19 @@ public class rotateArray {
         return x[hi];
     }
 
+    static int bisearchnodup2(int[] x) {
+        int lo = 0, hi = x.length - 1; // 最终lo指向前半数组末尾，hi指向后半数组开始
+        if (x[lo] < x[hi]) return x[lo]; // 直接为非旋转数组，返回第一个即为最小元素
+        while (lo < hi) { // 常规退出条件
+            int mid = lo + (hi - lo) / 2;
+            if (x[mid] < x[hi]) { // mid在后半数组，最小值在其前
+                hi = mid;
+            } else { // mid在前半数组，最小值在其后+1 位置
+                lo = mid + 1;
+            }
+        }
+        return x[lo];
+
     // 1.1、有重复旋转数组求最小值：二分查找
     static int bisearch(int[] x) {
         int lo = 0, hi = x.length - 1; // 最终lo指向前半数组末尾，hi指向后半数组开始
